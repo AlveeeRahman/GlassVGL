@@ -15,7 +15,9 @@ include $(LVGL_PATH)/lvgl.mk
 include $(GLASSVGL_DIR)/glassvgl.mk
 
 OBJDIR := obj
-OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(abspath $(CSRCS))) $(OBJDIR)/main.o $(OBJDIR)/showcase.o
+SHOWCASE := ../showcase/glassvgl_showcase.c ../showcase/glassvgl_showcase_look.c $(wildcard ../showcase/fonts/gv_font_*.c)
+OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(abspath $(CSRCS))) $(OBJDIR)/main.o \
+        $(patsubst ../showcase/%.c,$(OBJDIR)/showcase/%.o,$(SHOWCASE))
 
 glassvgl_desktop: $(OBJS)
 	$(CC) -o $@ $^ -lm
@@ -24,7 +26,7 @@ $(OBJDIR)/main.o: main.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJDIR)/showcase.o: ../showcase/glassvgl_showcase.c
+$(OBJDIR)/showcase/%.o: ../showcase/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 

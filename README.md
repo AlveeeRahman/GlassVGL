@@ -24,38 +24,55 @@ microcontrollers such as the ESP32, ESP32-S3, Raspberry Pi Pico (RP2040) and STM
 PC. It gives LVGL widgets translucent glass panels, a soft 3D bevel, accent colours and built-in
 wallpapers, with light and dark schemes.
 
-This repository holds the free samples: an example project for every common LVGL toolchain, the
-screenshots and the logo. The theme itself is the paid GlassVGL Pro pack ($5), which is not on sale
-yet. The samples build once the pack sits next to this repository.
+This repository holds the free samples: an example project for every common LVGL toolchain, seven
+app sample screens, the screenshots, the logo and a free sample of the icon pack. The theme itself
+is the paid GlassVGL Pro pack, which is not on sale yet; see [What's for sale](#whats-for-sale).
+The samples build once the pack sits next to this repository.
 
-<img src="assets/screens/smart-home-dark.png" alt="GlassVGL smart home sample at 800x480 in the dark scheme: frosted glass light tiles, a thermostat dial and scene buttons over a sunset wallpaper" width="800">
+<img src="assets/screens/smart-home-dark.png" alt="GlassVGL smart home sample at 800x480 in the dark scheme: frosted glass device tiles, a thermostat dial and scene buttons over a ribbon wallpaper" width="800">
 
 Seven app-style sample screens come with the samples: a media player, a smart home room, settings,
 a music library, weather, a round watch face and an energy dashboard. They are in
 [`examples/showcase`](examples/showcase) and use only the theme's public API and stock LVGL widgets.
 
-## Why it is fast enough for an MCU
+## Why it stays snappy on an MCU
 
-The blur is the costly part of a glass look, so GlassVGL does it once at start-up and keeps the
-result. After that a glass panel costs one image copy, one translucent fill and two thin bevel
-lines per frame. On a PC benchmark (LVGL 9.6, RGB565, one core of a 2.1 GHz Xeon), a full-screen
-redraw of the controls screen at 800x480 took 1.2 ms with the glass on and 0.8 ms in FLAT mode with
-the glass off. A microcontroller is much slower than this, so the demo's STATS screen measures the
-same thing on your board.
+**The blur runs once.** Blur is the costly part of a glass look, so GlassVGL does it once at
+start-up and keeps the result. After that a glass panel costs one image copy, one translucent fill
+and two thin bevel lines each time it is drawn. On a PC benchmark (LVGL 9.6, RGB565, one core of a
+2.1 GHz Xeon), a full-screen redraw of the controls screen at 800x480 took 1.2 ms with the glass on
+and 0.7 ms in FLAT mode with the glass off.
+
+**Unchanged values are not redrawn.** A live screen usually refreshes its labels from a timer, and
+LVGL 9 redraws a label each time its text is set, even when the text is the same. GlassVGL Pro's
+change-only setters compare first and leave unchanged widgets alone. In the pack's host test, a
+screen of 12 glass tiles refreshed ten times a second with one value changing went from 7,570 to
+994 redrawn pixels per refresh. The same technique, used in an earlier ESP32-S3 firmware of ours
+without GlassVGL (172x320 SPI panel), cut LVGL's share of a CPU core on a static screen from 50.2%
+to 9.5%.
+
+**Page switches skip the fade.** `lv_glass_live_show_screen()` loads a page with no fade, which
+would draw both pages for the whole fade, and runs its refresh timer at once, so the new page shows
+fresh values instead of waiting for the next tick.
+
+A microcontroller is much slower than a PC, so the demo's STATS screen measures redraw time on your
+board. The soft panel shadows in the app sample screenshots are an option that is off by default:
+shadows are drawn on every redraw, so leave them off on slow boards.
 
 ## Screenshots of the LVGL glass theme
 
 Every image was rendered by the theme's own code on a PC and is shown at the panel's real size.
 Each file holds an exact 2x copy of the panel's pixels, so it stays sharp on high-density screens
-and is never resampled. They were rendered in 24-bit colour; on an RGB565 panel, smooth gradients
-show light banding. Click a heading to open it.
+and is never resampled. The one exception is the accent sheet, noted under it. They were rendered
+in 24-bit colour; on an RGB565 panel, smooth gradients show light banding. Click a heading to open
+it.
 
 <details open>
 <summary>App sample screens at 800x480, light and dark</summary>
 
 <img src="assets/screens/player-light.png" alt="Media player sample, light scheme: gradient cover art, track title, progress slider, transport buttons and volume" width="800">
 
-<img src="assets/screens/player-dark.png" alt="Media player sample, dark scheme over the sunset wallpaper" width="800">
+<img src="assets/screens/player-dark.png" alt="Media player sample, dark scheme over the ribbon wallpaper" width="800">
 
 <img src="assets/screens/smart-home-light.png" alt="Smart home sample, light scheme: six device tiles with switches, a thermostat dial and scene buttons" width="800">
 
@@ -63,15 +80,15 @@ show light banding. Click a heading to open it.
 
 <img src="assets/screens/settings-dark.png" alt="Settings sample, dark scheme" width="800">
 
-<img src="assets/screens/music-light.png" alt="Music library sample, light scheme: five album covers, an up-next list and a mini player" width="800">
+<img src="assets/screens/music-light.png" alt="Music library sample, light scheme: five recently played album covers and a mini player" width="800">
 
 <img src="assets/screens/music-dark.png" alt="Music library sample, dark scheme" width="800">
 
-<img src="assets/screens/weather-light.png" alt="Weather sample, light scheme: current temperature with a sun and cloud icon, an hourly strip and five-day range bars" width="800">
+<img src="assets/screens/weather-light.png" alt="Weather sample, light scheme: current temperature, wind, humidity and UV, an hourly strip and five-day range bars" width="800">
 
 <img src="assets/screens/weather-dark.png" alt="Weather sample, dark scheme" width="800">
 
-<img src="assets/screens/charts-light.png" alt="Energy dashboard sample, light scheme: stat cards, a line chart of solar and home use, and a gauge" width="800">
+<img src="assets/screens/charts-light.png" alt="Energy dashboard sample, light scheme: stat cards, a bar chart of daily solar and home use, and a self-powered gauge" width="800">
 
 <img src="assets/screens/charts-dark.png" alt="Energy dashboard sample, dark scheme" width="800">
 
@@ -91,9 +108,10 @@ show light banding. Click a heading to open it.
 <details>
 <summary>Six accent colours, light and dark</summary>
 
-<img src="assets/screens/accents.png" alt="The smart home sample at 400x260 in the six accents: azure and coral and amber in the light scheme, mint and violet and rose in the dark scheme" width="816">
+<img src="assets/screens/accents.png" alt="The settings sample at 800x480 in the six accents: azure, coral and amber in the light scheme, mint, violet and rose in the dark scheme" width="816">
 
-Left column, light scheme: azure, coral, amber. Right column, dark scheme: mint, violet, rose.
+Left column, light scheme: azure, coral, amber. Right column, dark scheme: mint, violet, rose. This
+sheet holds each screen at 1x and is shown at half size; open the image to see it full size.
 
 </details>
 
@@ -156,9 +174,9 @@ Left to right, top to bottom: aurora, sunset, ocean, blush, meadow, graphite.
 </details>
 
 <details>
-<summary>The 3D bevel, before and after</summary>
+<summary>The 3D bevel up close</summary>
 
-<img src="assets/previews/bevel-before-after.png" alt="Glass widgets with flat rims and with the 3D bevel" width="830">
+<img src="assets/previews/bevel-close-up.png" alt="The thermostat card at twice its size in the light and dark schemes: a bright edge on the top and left of each glass panel and button, and a darker edge on the bottom and right" width="830">
 
 </details>
 
@@ -180,10 +198,101 @@ In snapshot and direct mode each page carries its own copy of the wallpaper.
 - **Render modes:** FULL for boards with PSRAM, LITE for boards without it, FLAT when RAM is very short. AUTO picks one from the memory it finds.
 - **Widget variants:** panel, accent or clear glass, or a plain solid fill, set per widget.
 - **Swipe pager:** slides pictures of the pages instead of redrawing every widget, when the RAM allows.
+- **Change-only live setters:** labels and colours set from a refresh timer are redrawn only when they change.
 - **Demo:** six screens (home, controls, lists, keyboard, dashboard, stats) that fit any size from 240x240 round to 1024x600.
 - **App samples (free, MIT):** media player, smart home, settings, music library, weather, round watch face and energy dashboard, in `examples/showcase`.
 
 It works with LVGL 9.3 to 9.6, in RGB565, RGB565_SWAPPED, RGB888 and XRGB8888.
+
+## What's for sale
+
+None of the paid packs is on sale yet. The store links below will go live when they are. Every
+picture of a paid pack on this page carries a "GlassVGL preview" watermark.
+
+| | What it is | Price | Licence | Store |
+|---|---|---|---|---|
+| **Free (this repository)** | Samples, app screens and assets | Free | MIT (samples), CC BY 4.0 (icon sample) | You are here |
+| **GlassVGL Pro** | The LVGL glass theme itself | $12.99 on Gumroad, $11.99 on Ko-fi | Build into your own products, no royalties | Coming soon |
+| **GlassVGL Icons** | A glass icon theme for Linux desktops | $12.99 on Gumroad, $11.99 on Ko-fi | Personal use on your own devices | Coming soon |
+| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04 | $18.99 on Gumroad, $17.99 on Ko-fi | Not announced yet | Coming soon |
+| **GlassVGL Desktop + Icons bundle** | GlassVGL Desktop and GlassVGL Icons together | $27.99 on Gumroad, $24.99 on Ko-fi | As for each pack | Coming soon |
+
+### Free, in this repository
+
+- Sample projects for Arduino, PlatformIO, ESP-IDF, Zephyr, CMake and make.
+- Seven app sample screens in `examples/showcase`, with their Inter and Lucide fonts.
+- Every screenshot on this page, the logo and the social preview.
+- A 25-icon sample of GlassVGL Icons in [`icons/`](icons), under CC BY 4.0.
+
+The samples need GlassVGL Pro to build. No theme source is in this repository.
+
+### GlassVGL Pro
+
+The theme that drew every screenshot on this page.
+
+- **One call styles every widget:** `lv_glass_theme_init()` themes all the LVGL widgets you create after it.
+- **Glass that is cheap to draw:** the blur is baked once at start-up, with FULL, LITE and FLAT render modes picked by the memory your board has.
+- **Change-only live setters:** labels and colours that have not changed are not redrawn, as in [Why it stays snappy on an MCU](#why-it-stays-snappy-on-an-mcu).
+- **Swipe pager:** slides pictures of the pages instead of redrawing every widget, when the RAM allows.
+- **Light and dark schemes,** six accents plus your own colour, and six wallpapers drawn in code.
+- **Six demo screens,** including a STATS screen that measures your board, laid out from 240x240 round to 1024x600.
+- **Ready for your build:** Arduino library, PlatformIO, ESP-IDF component, Zephyr module, CMake and make.
+
+It works with LVGL 9.3 to 9.6. It has been built and run on a PC, and has not been run on real hardware yet.
+
+### GlassVGL Icons
+
+A frosted-glass icon theme for Linux desktops, in light and dark.
+
+<img src="assets/icons/icons-light.png" alt="GlassVGL Icons, light theme: app, folder and file icons on frosted glass tiles" width="800">
+
+- **397 colour icons** in light and dark, each drawn for 16, 22, 24, 32, 48 and 64 px plus a scalable version.
+- **159 symbolic icons** for sidebars and status areas that follow your theme's colours.
+- **Apps, folders, 116 file types, devices and emblems** for the GNOME apps and for Debian-based LXDE and labwc desktops.
+- **One-command install** that switches your icons and keeps a note of your old theme, and a one-command uninstall that puts it back.
+
+It is built for Ubuntu 24.04 to 26.04 (GNOME 46 to 50) and for Debian-based LXDE and labwc desktops,
+and was tested on Ubuntu 24.04 in GNOME Files and in PCManFM. Snap apps, such as Firefox on Ubuntu,
+always show their own icons. No brand logos are drawn.
+
+<details>
+<summary>More GlassVGL Icons previews</summary>
+
+<img src="assets/icons/icons-dark.png" alt="GlassVGL Icons, dark theme" width="800">
+
+<img src="assets/icons/files-light.png" alt="GNOME Files on Ubuntu 24.04 with GlassVGL Icons, light theme: glass folder icons and the sidebar's symbolic icons" width="800">
+
+<img src="assets/icons/files-dark.png" alt="GNOME Files on Ubuntu 24.04 with GlassVGL Icons, dark theme" width="800">
+
+</details>
+
+### GlassVGL Desktop
+
+A frosted-glass theme for the whole desktop, in light and dark, made to go with GlassVGL Icons.
+It will style GTK 3 and GTK 4 apps and the GNOME Shell top bar, dock, menus and notifications, and
+come with wallpapers drawn to match. It is being made for Ubuntu 24.04 (GNOME 46). The theme is
+still being built, so the pictures below are design renders of it, not screenshots.
+
+<img src="assets/previews/desktop-light.png" alt="GlassVGL Desktop design render, light scheme: Files and Settings windows with a glass top bar, dock and notification over the ocean wallpaper" width="800">
+
+<details>
+<summary>More GlassVGL Desktop design renders</summary>
+
+<img src="assets/previews/desktop-dark.png" alt="GlassVGL Desktop design render, dark scheme over the graphite wallpaper" width="800">
+
+<img src="assets/previews/desktop-light-fullglass.png" alt="GlassVGL Desktop design render, light scheme with the optional full-glass sidebars and headerbars" width="800">
+
+<img src="assets/previews/desktop-dark-fullglass.png" alt="GlassVGL Desktop design render, dark scheme with the optional full-glass sidebars and headerbars" width="800">
+
+</details>
+
+### GlassVGL Desktop + Icons bundle
+
+Both packs together: $3.99 less than buying them one at a time on Gumroad, and $4.99 less on Ko-fi.
+
+<img src="assets/previews/bundle.png" alt="The bundle: a GlassVGL Desktop design render next to the GlassVGL Icons preview sheet" width="800">
+
+Ubuntu is a trademark of Canonical Ltd. GlassVGL is not affiliated with or endorsed by Canonical.
 
 ## Sample projects for every LVGL toolchain
 
@@ -240,10 +349,12 @@ make LVGL_PATH=/path/to/lvgl && ./glassvgl_desktop
 ./glassvgl_desktop smart-home.ppm 800 480 smart-home   # an app sample instead of the demo
 ```
 
-To use an app sample in your own project, add `examples/showcase/glassvgl_showcase.c` to the build
-and call `glassvgl_showcase_show(GLASSVGL_SHOWCASE_WEATHER);` after starting the theme. The
-samples look best with Montserrat 12, 14, 16, 20, 24, 28, 36 and 48 turned on in `lv_conf.h`; any
-size that is off falls back to the next smaller one.
+To use an app sample in your own project, add `examples/showcase/glassvgl_showcase.c`,
+`glassvgl_showcase_look.c` and the `gv_font_*.c` files in `examples/showcase/fonts` to the build,
+and call `glassvgl_showcase_show(GLASSVGL_SHOWCASE_WEATHER);` after starting the theme. For the
+look of the screenshots (Inter type, Lucide icons, soft shadows and the ribbon wallpaper), call
+`glassvgl_showcase_config(&cfg, disp);` before `lv_glass_theme_init()`. Montserrat 14 must be on
+in `lv_conf.h`, because LVGL's own widget symbols fall back to it.
 
 If GlassVGL Pro lives somewhere else, point the sample at it: `-DGLASSVGL_DIR=...` for CMake and
 Zephyr, `GLASSVGL_DIR=...` for make, the `symlink://` line in `platformio.ini`, or the `path:` line
@@ -271,8 +382,10 @@ arduino-cli 1.3.1 for the Raspberry Pi Pico. The ESP-IDF sample, the ESP32 build
 ## Licence
 
 The sample code and configuration files are under the MIT licence in [LICENSE](LICENSE). The
-GlassVGL name and logo are not covered by it. The GlassVGL Pro pack the samples build against has
-its own paid licence and is not in this repository. Third-party credits are in
+GlassVGL name and logo are not covered by it. The fonts in `examples/showcase/fonts` are built from
+Inter (SIL Open Font License 1.1) and Lucide icons (ISC licence), and keep those licences. The icon
+sample in `icons/` is under CC BY 4.0. The GlassVGL Pro pack the samples build against has its own
+paid licence and is not in this repository. Third-party credits are in
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 The look was inspired by Kyant0's [AndroidLiquidGlass](https://github.com/Kyant0/AndroidLiquidGlass)

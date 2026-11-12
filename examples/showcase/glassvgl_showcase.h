@@ -6,12 +6,15 @@
  * They use only the public GlassVGL API (lv_glass.h) and stock LVGL widgets, so they show what an
  * app looks like with the theme and nothing else. MIT licence, like the rest of this repository.
  *
+ *     lv_glass_config_init(&cfg);
+ *     cfg.scheme = LV_GLASS_SCHEME_DARK;
+ *     glassvgl_showcase_config(&cfg, disp);   // optional: the look of the screenshots
  *     lv_glass_theme_init(disp, &cfg);
  *     glassvgl_showcase_show(GLASSVGL_SHOWCASE_SMART_HOME);
  *
- * Every screen is laid out for landscape panels from 800x480 to 1024x600; 480x320 works with fewer
- * items on some screens. The watch face is made
- * for round panels (240x240 up to 466x466) and draws in a centred circle on any other size.
+ * The landscape screens are laid out for 800x480 to 1024x600 panels. The watch face is made for
+ * round panels from 240x240 to 466x466 and draws in a centred circle on any other size.
+ * Text uses the Inter fonts with Lucide icons in the fonts folder; add its gv_font_*.c files to your build.
  */
 #ifndef GLASSVGL_SHOWCASE_H
 #define GLASSVGL_SHOWCASE_H
@@ -35,6 +38,16 @@ typedef enum {
 
 /** Build one sample screen and load it. Call lv_glass_theme_init() first. Returns the screen. */
 lv_obj_t * glassvgl_showcase_show(glassvgl_showcase_t which);
+
+/**
+ * Set cfg up for the look of the README screenshots: Inter fonts, soft panel shadows and a
+ * generated wallpaper of glossy ribbons, drawn once for disp in its own colour format. Set
+ * cfg->scheme first (light and dark get their own wallpaper), then call lv_glass_theme_init().
+ * The wallpaper takes one screen-sized buffer from lv_malloc (768 KB at 800x480 in RGB565), which
+ * the theme uses in place. Returns false, with the built-in wallpaper left as it was, if that
+ * buffer cannot be had or the colour format is not RGB565, RGB888, XRGB8888 or ARGB8888.
+ */
+bool glassvgl_showcase_config(lv_glass_config_t * cfg, lv_display_t * disp);
 
 /** Short English name of a screen, for logs and file names ("player", "smart-home", ...). */
 const char * glassvgl_showcase_name(glassvgl_showcase_t which);

@@ -25,6 +25,8 @@ if(NOT EXISTS "${GLASSVGL_DIR}/CMakeLists.txt")
 endif()
 add_subdirectory(${GLASSVGL_DIR} glassvgl)
 
-add_executable(glassvgl_desktop main.c ../showcase/glassvgl_showcase.c)
+file(GLOB SHOWCASE_FONTS ${CMAKE_CURRENT_SOURCE_DIR}/../showcase/fonts/gv_font_*.c)
+add_executable(glassvgl_desktop main.c ../showcase/glassvgl_showcase.c ../showcase/glassvgl_showcase_look.c
+               ${SHOWCASE_FONTS})
 target_include_directories(glassvgl_desktop PRIVATE ../showcase)
 target_link_libraries(glassvgl_desktop PRIVATE glassvgl lvgl m)
