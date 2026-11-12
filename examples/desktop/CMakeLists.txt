@@ -1,6 +1,6 @@
 # GlassVGL desktop example: LVGL and GlassVGL pulled in with add_subdirectory().
 #   cmake -S . -B build -DLVGL_DIR=/path/to/lvgl [-DGLASSVGL_DIR=/path/to/GlassVGL-Pro]
-#   cmake --build build && ./build/glassvgl_desktop
+#   cmake --build build && ./build/glassvgl_desktop [out.ppm] [width] [height] [screen]
 # GLASSVGL_DIR defaults to a GlassVGL-Pro checkout next to this repository.
 cmake_minimum_required(VERSION 3.16)
 project(glassvgl_desktop C)
@@ -25,5 +25,6 @@ if(NOT EXISTS "${GLASSVGL_DIR}/CMakeLists.txt")
 endif()
 add_subdirectory(${GLASSVGL_DIR} glassvgl)
 
-add_executable(glassvgl_desktop main.c)
+add_executable(glassvgl_desktop main.c ../showcase/glassvgl_showcase.c)
+target_include_directories(glassvgl_desktop PRIVATE ../showcase)
 target_link_libraries(glassvgl_desktop PRIVATE glassvgl lvgl m)

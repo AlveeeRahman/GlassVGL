@@ -1,8 +1,12 @@
 /*
- * GlassVGL on a PC with no display attached: renders the demo's home screen into memory and
- * writes it to a PPM file. Built by both CMakeLists.txt and Makefile in this folder.
+ * GlassVGL on a PC with no display attached: renders the demo's home screen, or one of the app
+ * sample screens in ../showcase, into memory and writes it to a PPM file. Built by both
+ * CMakeLists.txt and Makefile in this folder.
  *
- *     ./glassvgl_desktop [out.ppm] [width] [height]
+ *     ./glassvgl_desktop [out.ppm] [width] [height] [screen]
+ *
+ * screen is one of player, smart-home, settings, music, weather, watch or charts. Leave it out for
+ * the demo's home screen.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +15,7 @@
 #include "lvgl.h"
 #include "lv_glass.h"
 #include "demo/lv_glass_demo.h"
+#include "glassvgl_showcase.h"
 
 static int32_t W = 480, H = 320;
 static uint8_t * frame; /* the whole screen, RGB565 */
@@ -69,7 +74,19 @@ int main(int argc, char ** argv)
     cfg.wallpaper = LV_GLASS_WALLPAPER_AURORA;
     lv_glass_theme_init(disp, &cfg);
 
-    lv_glass_demo_start(0); /* 0: stay on the first screen */
+    const char * screen = argc > 4 ? argv[4] : NULL;
+    if(screen) {
+        int i = 0;
+        while(i < GLASSVGL_SHOWCASE_COUNT && strcmp(screen, glassvgl_showcase_name((glassvgl_showcase_t)i))) i++;
+        if(i == GLASSVGL_SHOWCASE_COUNT) {
+            fprintf(stderr, "unknown screen %s\n", screen);
+            return 1;
+        }
+        glassvgl_showcase_show((glassvgl_showcase_t)i);
+    }
+    else {
+        lv_glass_demo_start(0); /* 0: stay on the first screen */
+    }
     lv_refr_now(disp);
 
     lv_glass_stats_t st;

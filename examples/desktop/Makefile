@@ -8,19 +8,23 @@ GLASSVGL_DIR ?= ../../../GlassVGL-Pro
 
 CC ?= cc
 CFLAGS ?= -O2 -Wall -Wextra
-CFLAGS += -I. -DLV_CONF_INCLUDE_SIMPLE
+CFLAGS += -I. -I../showcase -DLV_CONF_INCLUDE_SIMPLE
 
 CSRCS :=
 include $(LVGL_PATH)/lvgl.mk
 include $(GLASSVGL_DIR)/glassvgl.mk
 
 OBJDIR := obj
-OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(abspath $(CSRCS))) $(OBJDIR)/main.o
+OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(abspath $(CSRCS))) $(OBJDIR)/main.o $(OBJDIR)/showcase.o
 
 glassvgl_desktop: $(OBJS)
 	$(CC) -o $@ $^ -lm
 
 $(OBJDIR)/main.o: main.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/showcase.o: ../showcase/glassvgl_showcase.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 

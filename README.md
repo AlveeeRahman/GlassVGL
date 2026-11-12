@@ -1,8 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo/glassvgl-logo-dark.svg">
-    <img src="assets/logo/glassvgl-logo.svg" alt="GlassVGL logo: a frosted-glass tile with a square-wave mark" width="360">
-  </picture>
+  <img src="assets/logo/glassvgl-logo.svg" alt="GlassVGL logo: a frosted-glass tile with a square-wave mark and a frosted mint-to-violet wordmark" width="360">
 </p>
 
 <h1 align="center">GlassVGL: a frosted-glass theme for LVGL 9 on microcontrollers</h1>
@@ -31,7 +28,11 @@ This repository holds the free samples: an example project for every common LVGL
 screenshots and the logo. The theme itself is the paid GlassVGL Pro pack ($5), which is not on sale
 yet. The samples build once the pack sits next to this repository.
 
-<img src="assets/previews/controls-800x480-light.png" alt="GlassVGL controls screen at 800x480 in the light scheme, with glass sliders, switches and buttons over a gradient wallpaper" width="480">
+<img src="assets/screens/smart-home-dark.png" alt="GlassVGL smart home sample at 800x480 in the dark scheme: frosted glass light tiles, a thermostat dial and scene buttons over a sunset wallpaper" width="800">
+
+Seven app-style sample screens come with the samples: a media player, a smart home room, settings,
+a music library, weather, a round watch face and an energy dashboard. They are in
+[`examples/showcase`](examples/showcase) and use only the theme's public API and stock LVGL widgets.
 
 ## Why it is fast enough for an MCU
 
@@ -44,50 +45,127 @@ same thing on your board.
 
 ## Screenshots of the LVGL glass theme
 
-Every image was rendered by the theme's own code. Click a heading to open it.
+Every image was rendered by the theme's own code on a PC and is shown at the panel's real size.
+Each file holds an exact 2x copy of the panel's pixels, so it stays sharp on high-density screens
+and is never resampled. They were rendered in 24-bit colour; on an RGB565 panel, smooth gradients
+show light banding. Click a heading to open it.
+
+<details open>
+<summary>App sample screens at 800x480, light and dark</summary>
+
+<img src="assets/screens/player-light.png" alt="Media player sample, light scheme: gradient cover art, track title, progress slider, transport buttons and volume" width="800">
+
+<img src="assets/screens/player-dark.png" alt="Media player sample, dark scheme over the sunset wallpaper" width="800">
+
+<img src="assets/screens/smart-home-light.png" alt="Smart home sample, light scheme: six device tiles with switches, a thermostat dial and scene buttons" width="800">
+
+<img src="assets/screens/settings-light.png" alt="Settings sample, light scheme: a glass sidebar list and a display page with a brightness slider, switches, accent dots and a dropdown" width="800">
+
+<img src="assets/screens/settings-dark.png" alt="Settings sample, dark scheme" width="800">
+
+<img src="assets/screens/music-light.png" alt="Music library sample, light scheme: five album covers, an up-next list and a mini player" width="800">
+
+<img src="assets/screens/music-dark.png" alt="Music library sample, dark scheme" width="800">
+
+<img src="assets/screens/weather-light.png" alt="Weather sample, light scheme: current temperature with a sun and cloud icon, an hourly strip and five-day range bars" width="800">
+
+<img src="assets/screens/weather-dark.png" alt="Weather sample, dark scheme" width="800">
+
+<img src="assets/screens/charts-light.png" alt="Energy dashboard sample, light scheme: stat cards, a line chart of solar and home use, and a gauge" width="800">
+
+<img src="assets/screens/charts-dark.png" alt="Energy dashboard sample, dark scheme" width="800">
+
+</details>
 
 <details>
-<summary>Six demo screens at 800x480, light and dark</summary>
+<summary>Round watch face: 466x466 and 240x240</summary>
 
-<img src="assets/previews/sheet-800x480-light.png" alt="Six demo screens at 800x480, light scheme">
+<img src="assets/screens/watch-466-dark.png" alt="Round watch face at 466x466, dark scheme: three activity rings around a glass dial with the time, date, steps, heart rate and battery" width="466">
+<img src="assets/screens/watch-466-light.png" alt="Round watch face at 466x466, light scheme" width="466">
 
-<img src="assets/previews/sheet-800x480-dark.png" alt="Six demo screens at 800x480, dark scheme">
+<img src="assets/screens/watch-240-dark.png" alt="Round watch face at 240x240, dark scheme" width="240">
+<img src="assets/screens/watch-240-light.png" alt="Round watch face at 240x240, light scheme" width="240">
 
-<img src="assets/previews/home-800x480-dark.png" alt="Home screen at 800x480, dark scheme" width="480">
+</details>
+
+<details>
+<summary>Six accent colours, light and dark</summary>
+
+<img src="assets/screens/accents.png" alt="The smart home sample at 400x260 in the six accents: azure and coral and amber in the light scheme, mint and violet and rose in the dark scheme" width="816">
+
+Left column, light scheme: azure, coral, amber. Right column, dark scheme: mint, violet, rose.
+
+</details>
+
+<details>
+<summary>The pack's own demo screens at 800x480</summary>
+
+<img src="assets/screens/demo-home-light.png" alt="Demo home screen, light scheme: clock card, app icon grid and a dock" width="800">
+
+<img src="assets/screens/demo-home-dark.png" alt="Demo home screen, dark scheme" width="800">
+
+<img src="assets/screens/demo-controls-light.png" alt="Demo controls screen, light scheme: sliders, switches, an arc dial and buttons" width="800">
+
+<img src="assets/screens/demo-controls-dark.png" alt="Demo controls screen, dark scheme" width="800">
+
+<img src="assets/screens/demo-lists-light.png" alt="Demo lists screen, light scheme: tabs with lists of devices and scenes" width="800">
+
+<img src="assets/screens/demo-lists-dark.png" alt="Demo lists screen, dark scheme" width="800">
+
+<img src="assets/screens/demo-keyboard-light.png" alt="Demo keyboard screen, light scheme: a text field and the on-screen keyboard" width="800">
+
+<img src="assets/screens/demo-keyboard-dark.png" alt="Demo keyboard screen, dark scheme" width="800">
+
+<img src="assets/screens/demo-dashboard-light.png" alt="Demo dashboard screen, light scheme: line and bar charts with stat cards" width="800">
+
+<img src="assets/screens/demo-dashboard-dark.png" alt="Demo dashboard screen, dark scheme" width="800">
+
+<img src="assets/screens/demo-stats-light.png" alt="Demo stats screen, light scheme: render mode, bake time, glass memory and redraw time measured on the board" width="800">
+
+<img src="assets/screens/demo-stats-dark.png" alt="Demo stats screen, dark scheme" width="800">
 
 </details>
 
 <details>
 <summary>Small screens: 240x240 round and 320x240</summary>
 
-<img src="assets/previews/sheet-240x240-light.png" alt="Six demo screens on a 240x240 round panel, light scheme">
+<img src="assets/screens/small-240-round.png" alt="The six demo screens on a 240x240 round panel, light scheme" width="752">
 
-<img src="assets/previews/sheet-320x240-dark.png" alt="Six demo screens at 320x240, dark scheme">
+<img src="assets/screens/small-320x240.png" alt="The six demo screens at 320x240, dark scheme" width="656">
 
 </details>
 
 <details>
-<summary>Accents, wallpapers and the three render modes</summary>
+<summary>The six built-in wallpapers</summary>
 
-<img src="assets/previews/accents.png" alt="The six accent colours in light and dark">
+<img src="assets/screens/wallpapers.png" alt="The demo home screen at 400x260 on each wallpaper: aurora, sunset, ocean, blush, meadow and graphite" width="816">
 
-<img src="assets/previews/wallpapers.jpg" alt="The six built-in wallpapers">
+Left to right, top to bottom: aurora, sunset, ocean, blush, meadow, graphite.
 
-<img src="assets/previews/modes.png" alt="The same screen in FULL, LITE and FLAT mode">
+</details>
+
+<details>
+<summary>FULL, LITE and FLAT render modes</summary>
+
+<img src="assets/screens/mode-full.png" alt="Controls screen in FULL mode: full-resolution baked glass" width="800">
+
+<img src="assets/screens/mode-lite.png" alt="Controls screen in LITE mode: quarter-resolution glass smoothed back up" width="800">
+
+<img src="assets/screens/mode-flat.png" alt="Controls screen in FLAT mode: gradients and translucent fills, no image buffers" width="800">
 
 </details>
 
 <details>
 <summary>The 3D bevel, before and after</summary>
 
-<img src="assets/previews/bevel-before-after.png" alt="Glass widgets with flat rims and with the 3D bevel" width="560">
+<img src="assets/previews/bevel-before-after.png" alt="Glass widgets with flat rims and with the 3D bevel" width="830">
 
 </details>
 
 <details>
 <summary>Swipe pager mid-swipe: live, snapshot and direct</summary>
 
-<img src="assets/previews/swipe-live-snapshot-direct.png" alt="The pager halfway through a swipe in live, snapshot and direct mode" width="320">
+<img src="assets/previews/swipe-live-snapshot-direct.png" alt="The pager halfway through a swipe in live, snapshot and direct mode" width="400">
 
 Top to bottom: live, snapshot, direct. In live mode the wallpaper stays still while the pages move.
 In snapshot and direct mode each page carries its own copy of the wallpaper.
@@ -103,6 +181,7 @@ In snapshot and direct mode each page carries its own copy of the wallpaper.
 - **Widget variants:** panel, accent or clear glass, or a plain solid fill, set per widget.
 - **Swipe pager:** slides pictures of the pages instead of redrawing every widget, when the RAM allows.
 - **Demo:** six screens (home, controls, lists, keyboard, dashboard, stats) that fit any size from 240x240 round to 1024x600.
+- **App samples (free, MIT):** media player, smart home, settings, music library, weather, round watch face and energy dashboard, in `examples/showcase`.
 
 It works with LVGL 9.3 to 9.6, in RGB565, RGB565_SWAPPED, RGB888 and XRGB8888.
 
@@ -116,7 +195,8 @@ It works with LVGL 9.3 to 9.6, in RGB565, RGB565_SWAPPED, RGB888 and XRGB8888.
 | `examples/platformio-native` | PlatformIO | The demo on your PC, no board needed |
 | `examples/esp-idf` | ESP-IDF 5 | The demo with PSRAM switched on |
 | `examples/zephyr` | Zephyr | The demo with GlassVGL as a Zephyr module |
-| `examples/desktop` | CMake or make | The demo on your PC, writing a picture of the home screen |
+| `examples/desktop` | CMake or make | The demo or any app sample on your PC, writing a picture of the screen |
+| `examples/showcase` | Any (plain C) | Seven app sample screens to drop into your own project |
 
 The Arduino, PlatformIO and ESP-IDF board samples have one function to fill in, `panel_push()`,
 which sends a block of pixels to your display with whatever driver you already use. The pager
@@ -157,7 +237,13 @@ west build -b native_sim/native/64 path/to/GlassVGL/examples/zephyr
 cd examples/desktop
 cmake -S . -B build -DLVGL_DIR=/path/to/lvgl && cmake --build build && ./build/glassvgl_desktop
 make LVGL_PATH=/path/to/lvgl && ./glassvgl_desktop
+./glassvgl_desktop smart-home.ppm 800 480 smart-home   # an app sample instead of the demo
 ```
+
+To use an app sample in your own project, add `examples/showcase/glassvgl_showcase.c` to the build
+and call `glassvgl_showcase_show(GLASSVGL_SHOWCASE_WEATHER);` after starting the theme. The
+samples look best with Montserrat 12, 14, 16, 20, 24, 28, 36 and 48 turned on in `lv_conf.h`; any
+size that is off falls back to the next smaller one.
 
 If GlassVGL Pro lives somewhere else, point the sample at it: `-DGLASSVGL_DIR=...` for CMake and
 Zephyr, `GLASSVGL_DIR=...` for make, the `symlink://` line in `platformio.ini`, or the `path:` line
@@ -176,7 +262,8 @@ lv_glass_theme_init(disp, &cfg);
 ## What has been tested
 
 With GlassVGL Pro beside them, these samples were built on a Linux PC by each toolchain's own tool:
-the desktop sample with CMake and with make against LVGL 9.3.0 and 9.6.0, `platformio-native` with
+the desktop sample (with all seven app samples) with CMake and with make against LVGL 9.3.0 and
+9.6.0, `platformio-native` with
 PlatformIO 6.2, `zephyr` on Zephyr's `native_sim/native/64` board, and both Arduino sketches with
 arduino-cli 1.3.1 for the Raspberry Pi Pico. The ESP-IDF sample, the ESP32 builds and the boards in
 `examples/platformio` were not built, and nothing has run on real hardware yet.
