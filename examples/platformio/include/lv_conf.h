@@ -16,6 +16,12 @@
 #define LV_USE_STDLIB_STRING LV_STDLIB_CLIB
 #define LV_USE_STDLIB_SPRINTF LV_STDLIB_CLIB
 
+/* Read the touch panel and redraw every 16 ms instead of LVGL's default 33. A tap then reaches the
+ * screen sooner: in GlassVGL Pro's tap test the wait after the finger lifts falls from 16.9 ms to
+ * 9.0 ms on average, and from 50 ms to 26 ms at worst. The cost is more redraws while something
+ * animates; a board whose frame takes longer than 16 ms just redraws as often as it can. */
+#define LV_DEF_REFR_PERIOD 16
+
 #define LV_USE_LOG 1
 #define LV_LOG_LEVEL LV_LOG_LEVEL_WARN
 
