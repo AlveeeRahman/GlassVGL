@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/AlveeeRahman/GlassVGL?label=samples%20licence" alt="Samples licence: MIT"></a>
-  <a href="https://github.com/AlveeeRahman/GlassVGL/tags"><img src="https://img.shields.io/github/v/tag/AlveeeRahman/GlassVGL?label=release&sort=semver" alt="Latest release tag"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.0.0-2ea44f" alt="Version 1.0.0"></a>
   <a href="https://lvgl.io"><img src="https://img.shields.io/badge/LVGL-9.3%20to%209.6-343839" alt="Works with LVGL 9.3 to 9.6"></a>
   <a href="https://github.com/AlveeeRahman/GlassVGL/stargazers"><img src="https://img.shields.io/github/stars/AlveeeRahman/GlassVGL?style=flat" alt="GitHub stars"></a>
   <a href="https://github.com/AlveeeRahman/GlassVGL/commits/main"><img src="https://img.shields.io/github/last-commit/AlveeeRahman/GlassVGL" alt="Last commit"></a>
