@@ -18,6 +18,8 @@
 - The settings sample's accent dots now mark the accent the theme was started with.
 - A "What's for sale" section in the README with the planned prices of GlassVGL Pro and GlassVGL
   Icons, and a 25-icon GlassVGL Icons sample in `icons/` under CC BY 4.0.
+- GlassVGL Desktop and a GlassVGL Desktop + Icons bundle in "What's for sale", both coming soon,
+  with the Canonical trademark note.
 - The README's speed section now covers the change-only live setters and instant page switches.
 
 ## 1.0.0 (2026-11-12)

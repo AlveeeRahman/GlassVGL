@@ -206,14 +206,15 @@ It works with LVGL 9.3 to 9.6, in RGB565, RGB565_SWAPPED, RGB888 and XRGB8888.
 
 ## What's for sale
 
-Neither paid pack is on sale yet. The store links below will go live when they are.
+None of the paid packs is on sale yet. The store links below will go live when they are.
 
-| | Free (this repository) | GlassVGL Pro | GlassVGL Icons |
-|---|---|---|---|
-| **What it is** | Samples, app screens and assets | The LVGL glass theme itself | A glass icon theme for Linux desktops |
-| **Price** | Free | $12.99 on Gumroad, $11.99 on Ko-fi | $12.99 on Gumroad, $11.99 on Ko-fi |
-| **Licence** | MIT (samples), CC BY 4.0 (icon sample) | Build into your own products, no royalties | Personal use on your own devices |
-| **Store** | You are here | Coming soon | Coming soon |
+| | What it is | Price | Licence | Store |
+|---|---|---|---|---|
+| **Free (this repository)** | Samples, app screens and assets | Free | MIT (samples), CC BY 4.0 (icon sample) | You are here |
+| **GlassVGL Pro** | The LVGL glass theme itself | $12.99 on Gumroad, $11.99 on Ko-fi | Build into your own products, no royalties | Coming soon |
+| **GlassVGL Icons** | A glass icon theme for Linux desktops | $12.99 on Gumroad, $11.99 on Ko-fi | Personal use on your own devices | Coming soon |
+| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04 | $18.99 on Gumroad, $17.99 on Ko-fi | Not announced yet | Coming soon |
+| **GlassVGL Desktop + Icons bundle** | GlassVGL Desktop and GlassVGL Icons together | $27.99 on Gumroad, $24.99 on Ko-fi | As for each pack | Coming soon |
 
 ### Free, in this repository
 
@@ -263,6 +264,19 @@ always show their own icons. No brand logos are drawn.
 <img src="assets/icons/files-dark.png" alt="GNOME Files on Ubuntu 24.04 with GlassVGL Icons, dark theme" width="800">
 
 </details>
+
+### GlassVGL Desktop
+
+A frosted-glass theme for the whole desktop, in light and dark, made to go with GlassVGL Icons.
+It will style GTK 3 and GTK 4 apps and the GNOME Shell top bar, menus and notifications, and come
+with wallpapers drawn to match. It is being made for Ubuntu 24.04 (GNOME 46). It is still being
+built, so there are no screenshots of it yet.
+
+### GlassVGL Desktop + Icons bundle
+
+Both packs together: $3.99 less than buying them one at a time on Gumroad, and $4.99 less on Ko-fi.
+
+Ubuntu is a trademark of Canonical Ltd. GlassVGL is not affiliated with or endorsed by Canonical.
 
 ## Sample projects for every LVGL toolchain
 
