@@ -71,7 +71,7 @@ int main(int argc, char ** argv)
     lv_glass_config_init(&cfg);
     cfg.scheme = LV_GLASS_SCHEME_DARK;
     cfg.accent = LV_GLASS_ACCENT_AZURE;
-    cfg.wallpaper = LV_GLASS_WALLPAPER_AURORA;
+    cfg.wallpaper = LV_GLASS_WALLPAPER_GRAPHITE;
     const char * screen = argc > 4 ? argv[4] : NULL;
     /* the app screens use the showcase look: Inter type, soft shadows and the ribbon wallpaper */
     if(screen && !glassvgl_showcase_config(&cfg, disp)) fprintf(stderr, "showcase look unavailable\n");
