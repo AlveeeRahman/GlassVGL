@@ -10,6 +10,15 @@
 - The wordmark in both logos is now frosted glass in mint, blue and violet, readable on light and
   dark pages; the README uses one logo for both themes.
 - New social preview with the smart home and watch samples.
+- Redrawn screenshots: the app sample screens now use Inter type with Lucide icons, soft panel
+  shadows and a ribbon wallpaper drawn in code (`glassvgl_showcase_config()`), and the accent sheet
+  shows the settings screen at 800x480, at 1x. All 35 files keep their names.
+- Showcase fonts in `examples/showcase/fonts`, built from Inter (SIL OFL 1.1) and Lucide (ISC),
+  with their licence files and a script to rebuild them.
+- The settings sample's accent dots now mark the accent the theme was started with.
+- A "What's for sale" section in the README with the planned prices of GlassVGL Pro and GlassVGL
+  Icons, and a 25-icon GlassVGL Icons sample in `icons/` under CC BY 4.0.
+- The README's speed section now covers the change-only live setters and instant page switches.
 
 ## 1.0.0 (2026-11-12)
 

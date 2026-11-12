@@ -5,8 +5,8 @@
  *
  *     ./glassvgl_desktop [out.ppm] [width] [height] [screen]
  *
- * screen is one of player, smart-home, settings, music, weather, watch or charts. Leave it out for
- * the demo's home screen.
+ * The size defaults to 800x480. screen is one of player, smart-home, settings, music, weather,
+ * watch or charts, drawn with the showcase look; leave it out for the demo's home screen.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +17,7 @@
 #include "demo/lv_glass_demo.h"
 #include "glassvgl_showcase.h"
 
-static int32_t W = 480, H = 320;
+static int32_t W = 800, H = 480;
 static uint8_t * frame; /* the whole screen, RGB565 */
 
 static void flush_cb(lv_display_t * disp, const lv_area_t * a, uint8_t * px)
@@ -72,9 +72,11 @@ int main(int argc, char ** argv)
     cfg.scheme = LV_GLASS_SCHEME_DARK;
     cfg.accent = LV_GLASS_ACCENT_AZURE;
     cfg.wallpaper = LV_GLASS_WALLPAPER_AURORA;
+    const char * screen = argc > 4 ? argv[4] : NULL;
+    /* the app screens use the showcase look: Inter type, soft shadows and the ribbon wallpaper */
+    if(screen && !glassvgl_showcase_config(&cfg, disp)) fprintf(stderr, "showcase look unavailable\n");
     lv_glass_theme_init(disp, &cfg);
 
-    const char * screen = argc > 4 ? argv[4] : NULL;
     if(screen) {
         int i = 0;
         while(i < GLASSVGL_SHOWCASE_COUNT && strcmp(screen, glassvgl_showcase_name((glassvgl_showcase_t)i))) i++;
@@ -87,6 +89,9 @@ int main(int argc, char ** argv)
     else {
         lv_glass_demo_start(0); /* 0: stay on the first screen */
     }
+    /* let the theme's short state transitions (a switch turning on) finish before the frame */
+    uint32_t start = lv_tick_get();
+    while(lv_tick_elaps(start) < 300) lv_timer_handler();
     lv_refr_now(disp);
 
     lv_glass_stats_t st;
