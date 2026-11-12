@@ -50,8 +50,8 @@ void setup()
     lv_glass_config_t cfg;
     lv_glass_config_init(&cfg);
     cfg.scheme = LV_GLASS_SCHEME_DARK;
-    cfg.accent = LV_GLASS_ACCENT_VIOLET;
-    cfg.wallpaper = LV_GLASS_WALLPAPER_SUNSET;
+    cfg.accent = LV_GLASS_ACCENT_AZURE;
+    cfg.wallpaper = LV_GLASS_WALLPAPER_GRAPHITE;
     cfg.mode = LV_GLASS_MODE_AUTO; /* FULL with enough memory, else LITE, else FLAT */
     lv_glass_theme_init(disp, &cfg);
 

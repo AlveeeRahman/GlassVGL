@@ -66,7 +66,7 @@ int main(int argc, char ** argv)
     lv_glass_config_init(&cfg);
     cfg.scheme = LV_GLASS_SCHEME_DARK;
     cfg.accent = LV_GLASS_ACCENT_AZURE;
-    cfg.wallpaper = LV_GLASS_WALLPAPER_AURORA;
+    cfg.wallpaper = LV_GLASS_WALLPAPER_GRAPHITE;
     lv_glass_theme_init(disp, &cfg);
 
     lv_glass_demo_start(0); /* 0: stay on the first screen */

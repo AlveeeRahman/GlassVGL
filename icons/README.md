@@ -3,16 +3,17 @@
 A free taste of GlassVGL Icons, the frosted-glass icon theme for Linux desktops. The sample holds 25
 icons: the Files, Terminal and web browser app icons, five folders (plain, home, documents,
 downloads and pictures), the trash, and text, image and PDF file icons. Each one is drawn for 16 to
-64 px and also comes as a scalable SVG. Any icon the sample does not have falls back to your
-current default theme.
+64 px and also comes as a scalable SVG, in a light theme and a dark theme. Any icon the sample does
+not have falls back to your current default theme.
 
 ## Install
 
 ```sh
 sha256sum -c SHA256SUMS
-tar xzf GlassVGL-Icons-Sample-1.0.0.tar.gz
-cd GlassVGL-Icons-Sample-1.0.0
-./install.sh              # install for this user and switch to it
+tar xzf GlassVGL-Icons-Sample-1.1.0.tar.gz
+cd GlassVGL-Icons-Sample-1.1.0
+./install.sh              # install for this user and switch to the light theme
+./install.sh --dark       # the same, but switch to the dark theme
 ./install.sh --no-apply   # install without switching
 ./uninstall.sh            # remove it and put your previous icons back
 ```

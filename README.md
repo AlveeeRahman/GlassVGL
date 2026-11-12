@@ -52,8 +52,8 @@ without GlassVGL (172x320 SPI panel), cut LVGL's share of a CPU core on a static
 to 9.5%.
 
 **Page switches skip the fade.** `lv_glass_live_show_screen()` loads a page with no fade, which
-would draw both pages for the whole fade, and runs its refresh timer at once, so the new page shows
-fresh values instead of waiting for the next tick.
+would draw both pages for the whole fade, and runs its refresh timer on the next pass of LVGL's
+timer handler, so the new page shows fresh values instead of waiting a whole timer period.
 
 A microcontroller is much slower than a PC, so the demo's STATS screen measures redraw time on your
 board. The soft panel shadows in the app sample screenshots are an option that is off by default:
@@ -61,11 +61,12 @@ shadows are drawn on every redraw, so leave them off on slow boards.
 
 ## Screenshots of the LVGL glass theme
 
-Every image was rendered by the theme's own code on a PC and is shown at the panel's real size.
-Each file holds an exact 2x copy of the panel's pixels, so it stays sharp on high-density screens
-and is never resampled. The one exception is the accent sheet, noted under it. They were rendered
-in 24-bit colour; on an RGB565 panel, smooth gradients show light banding. Click a heading to open
-it.
+Every image was rendered by the theme's own code on a PC and is shown at the panel's real size,
+in both the light and the dark scheme. Each file holds an exact 2x copy of the panel's pixels, so it
+stays sharp on high-density screens and is never resampled; the one change is a light "GlassVGL
+preview" watermark drawn over it. The exception is the accent sheets, noted under them. They were
+rendered in 24-bit colour; on an RGB565 panel, smooth gradients show light banding. Click a heading
+to open it.
 
 <details open>
 <summary>App sample screens at 800x480, light and dark</summary>
@@ -108,15 +109,22 @@ it.
 <details>
 <summary>Six accent colours, light and dark</summary>
 
-<img src="assets/screens/accents.png" alt="The settings sample at 800x480 in the six accents: azure, coral and amber in the light scheme, mint, violet and rose in the dark scheme" width="816">
+<img src="assets/screens/accents-light.png" alt="The settings sample at 800x480 in the six accents, light scheme: azure, mint, coral, violet, amber and rose" width="816">
 
-Left column, light scheme: azure, coral, amber. Right column, dark scheme: mint, violet, rose. This
-sheet holds each screen at 1x and is shown at half size; open the image to see it full size.
+<img src="assets/screens/accents-dark.png" alt="The settings sample at 800x480 in the six accents, dark scheme" width="816">
+
+Left to right, top to bottom: azure, mint, coral, violet, amber, rose. Each sheet holds the screens
+at 1x and is shown at half size; open an image to see it full size.
 
 </details>
 
 <details>
 <summary>The pack's own demo screens at 800x480</summary>
+
+These are the demo screens exactly as GlassVGL Pro draws them, with the Inter demo fonts that come
+with the pack and its built-in wallpapers (ocean in light, graphite in dark). The app samples above
+add the showcase look from this repository: the ribbon wallpaper image, Lucide icons and soft
+shadows.
 
 <img src="assets/screens/demo-home-light.png" alt="Demo home screen, light scheme: clock card, app icon grid and a dock" width="800">
 
@@ -147,29 +155,42 @@ sheet holds each screen at 1x and is shown at half size; open the image to see i
 <details>
 <summary>Small screens: 240x240 round and 320x240</summary>
 
-<img src="assets/screens/small-240-round.png" alt="The six demo screens on a 240x240 round panel, light scheme" width="752">
+<img src="assets/screens/small-240-round-light.png" alt="The six demo screens on a 240x240 round panel, light scheme" width="752">
 
-<img src="assets/screens/small-320x240.png" alt="The six demo screens at 320x240, dark scheme" width="656">
+<img src="assets/screens/small-240-round-dark.png" alt="The six demo screens on a 240x240 round panel, dark scheme" width="752">
 
-</details>
+<img src="assets/screens/small-320x240-light.png" alt="The six demo screens at 320x240, light scheme" width="656">
 
-<details>
-<summary>The six built-in wallpapers</summary>
-
-<img src="assets/screens/wallpapers.png" alt="The demo home screen at 400x260 on each wallpaper: aurora, sunset, ocean, blush, meadow and graphite" width="816">
-
-Left to right, top to bottom: aurora, sunset, ocean, blush, meadow, graphite.
+<img src="assets/screens/small-320x240-dark.png" alt="The six demo screens at 320x240, dark scheme" width="656">
 
 </details>
 
 <details>
-<summary>FULL, LITE and FLAT render modes</summary>
+<summary>The six built-in wallpapers, light and dark</summary>
 
-<img src="assets/screens/mode-full.png" alt="Controls screen in FULL mode: full-resolution baked glass" width="800">
+<img src="assets/screens/wallpapers-light.png" alt="The demo home screen at 400x260 on the light version of each wallpaper: aurora, sunset, ocean, blush, meadow and graphite" width="816">
 
-<img src="assets/screens/mode-lite.png" alt="Controls screen in LITE mode: quarter-resolution glass smoothed back up" width="800">
+<img src="assets/screens/wallpapers-dark.png" alt="The demo home screen at 400x260 on the dark version of each wallpaper" width="816">
 
-<img src="assets/screens/mode-flat.png" alt="Controls screen in FLAT mode: gradients and translucent fills, no image buffers" width="800">
+Left to right, top to bottom: aurora, sunset, ocean, blush, meadow, graphite. Each wallpaper has a
+light and a dark version, and the theme draws the one that matches the scheme.
+
+</details>
+
+<details>
+<summary>FULL, LITE and FLAT render modes, light and dark</summary>
+
+<img src="assets/screens/mode-full-light.png" alt="Controls screen in FULL mode, light scheme: full-resolution baked glass" width="800">
+
+<img src="assets/screens/mode-full-dark.png" alt="Controls screen in FULL mode, dark scheme" width="800">
+
+<img src="assets/screens/mode-lite-light.png" alt="Controls screen in LITE mode, light scheme: quarter-resolution glass smoothed back up" width="800">
+
+<img src="assets/screens/mode-lite-dark.png" alt="Controls screen in LITE mode, dark scheme" width="800">
+
+<img src="assets/screens/mode-flat-light.png" alt="Controls screen in FLAT mode, light scheme: gradients and translucent fills, no image buffers" width="800">
+
+<img src="assets/screens/mode-flat-dark.png" alt="Controls screen in FLAT mode, dark scheme" width="800">
 
 </details>
 
@@ -183,7 +204,8 @@ Left to right, top to bottom: aurora, sunset, ocean, blush, meadow, graphite.
 <details>
 <summary>Swipe pager mid-swipe: live, snapshot and direct</summary>
 
-<img src="assets/previews/swipe-live-snapshot-direct.png" alt="The pager halfway through a swipe in live, snapshot and direct mode" width="400">
+<img src="assets/previews/swipe-light.png" alt="The pager halfway through a swipe in live, snapshot and direct mode, light scheme" width="400">
+<img src="assets/previews/swipe-dark.png" alt="The pager halfway through a swipe in live, snapshot and direct mode, dark scheme" width="400">
 
 Top to bottom: live, snapshot, direct. In live mode the wallpaper stays still while the pages move.
 In snapshot and direct mode each page carries its own copy of the wallpaper.
@@ -194,7 +216,7 @@ In snapshot and direct mode each page carries its own copy of the wallpaper.
 
 - **Schemes:** light and dark.
 - **Accents:** azure, mint, coral, violet, amber and rose, plus any colour you pick.
-- **Wallpapers:** aurora, sunset, ocean, blush, meadow and graphite, drawn in code so they cost no image flash, or your own image.
+- **Wallpapers:** aurora, sunset, ocean, blush, meadow and graphite, each in a light and a dark version, drawn in code so they cost no image flash, or your own image.
 - **Render modes:** FULL for boards with PSRAM, LITE for boards without it, FLAT when RAM is very short. AUTO picks one from the memory it finds.
 - **Widget variants:** panel, accent or clear glass, or a plain solid fill, set per widget.
 - **Swipe pager:** slides pictures of the pages instead of redrawing every widget, when the RAM allows.
@@ -214,7 +236,7 @@ picture of a paid pack on this page carries a "GlassVGL preview" watermark.
 | **Free (this repository)** | Samples, app screens and assets | Free | MIT (samples), CC BY 4.0 (icon sample) | You are here |
 | **GlassVGL Pro** | The LVGL glass theme itself | $12.99 on Gumroad, $11.99 on Ko-fi | Build into your own products, no royalties | Coming soon |
 | **GlassVGL Icons** | A glass icon theme for Linux desktops | $12.99 on Gumroad, $11.99 on Ko-fi | Personal use on your own devices | Coming soon |
-| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04 | $18.99 on Gumroad, $17.99 on Ko-fi | Not announced yet | Coming soon |
+| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04. Design preview: still being built, not available yet | $18.99 on Gumroad, $17.99 on Ko-fi | Not announced yet | Coming soon |
 | **GlassVGL Desktop + Icons bundle** | GlassVGL Desktop and GlassVGL Icons together | $27.99 on Gumroad, $24.99 on Ko-fi | As for each pack | Coming soon |
 
 ### Free, in this repository
@@ -222,7 +244,7 @@ picture of a paid pack on this page carries a "GlassVGL preview" watermark.
 - Sample projects for Arduino, PlatformIO, ESP-IDF, Zephyr, CMake and make.
 - Seven app sample screens in `examples/showcase`, with their Inter and Lucide fonts.
 - Every screenshot on this page, the logo and the social preview.
-- A 25-icon sample of GlassVGL Icons in [`icons/`](icons), under CC BY 4.0.
+- A 25-icon sample of GlassVGL Icons in [`icons/`](icons), in light and dark, under CC BY 4.0.
 
 The samples need GlassVGL Pro to build. No theme source is in this repository.
 
@@ -234,7 +256,7 @@ The theme that drew every screenshot on this page.
 - **Glass that is cheap to draw:** the blur is baked once at start-up, with FULL, LITE and FLAT render modes picked by the memory your board has.
 - **Change-only live setters:** labels and colours that have not changed are not redrawn, as in [Why it stays snappy on an MCU](#why-it-stays-snappy-on-an-mcu).
 - **Swipe pager:** slides pictures of the pages instead of redrawing every widget, when the RAM allows.
-- **Light and dark schemes,** six accents plus your own colour, and six wallpapers drawn in code.
+- **Light and dark schemes,** six accents plus your own colour, and six wallpapers drawn in code, each in a light and a dark version.
 - **Six demo screens,** including a STATS screen that measures your board, laid out from 240x240 round to 1024x600.
 - **Ready for your build:** Arduino library, PlatformIO, ESP-IDF component, Zephyr module, CMake and make.
 
@@ -266,29 +288,39 @@ always show their own icons. No brand logos are drawn.
 
 </details>
 
-### GlassVGL Desktop
+### GlassVGL Desktop (design preview)
+
+**Not available yet.** GlassVGL Desktop is not on sale yet, and the pictures below are design
+renders of it, not screenshots of a running theme.
 
 A frosted-glass theme for the whole desktop, in light and dark, made to go with GlassVGL Icons.
 It will style GTK 3 and GTK 4 apps and the GNOME Shell top bar, dock, menus and notifications, and
-come with wallpapers drawn to match. It is being made for Ubuntu 24.04 (GNOME 46). The theme is
-still being built, so the pictures below are design renders of it, not screenshots.
+come with seven wallpapers drawn to match, each in a light and a dark version that switch with the
+desktop's style. It is being made for Ubuntu 24.04 (GNOME 46).
 
-<img src="assets/previews/desktop-light.png" alt="GlassVGL Desktop design render, light scheme: Files and Settings windows with a glass top bar, dock and notification over the ocean wallpaper" width="800">
+<img src="assets/previews/desktop-light.png" alt="GlassVGL Desktop design render, light scheme: Files and Settings windows with a glass top bar, dock and notification over the prism wallpaper" width="800">
 
 <details>
 <summary>More GlassVGL Desktop design renders</summary>
 
-<img src="assets/previews/desktop-dark.png" alt="GlassVGL Desktop design render, dark scheme over the graphite wallpaper" width="800">
+<img src="assets/previews/desktop-dark.png" alt="GlassVGL Desktop design render, dark scheme over the dark prism wallpaper" width="800">
 
 <img src="assets/previews/desktop-light-fullglass.png" alt="GlassVGL Desktop design render, light scheme with the optional full-glass sidebars and headerbars" width="800">
 
 <img src="assets/previews/desktop-dark-fullglass.png" alt="GlassVGL Desktop design render, dark scheme with the optional full-glass sidebars and headerbars" width="800">
 
+<img src="assets/previews/desktop-wallpapers-light.png" alt="The seven GlassVGL Desktop wallpapers, light versions: prism, aurora, sunset, ocean, graphite, blush and meadow" width="800">
+
+<img src="assets/previews/desktop-wallpapers-dark.png" alt="The seven GlassVGL Desktop wallpapers, dark versions" width="800">
+
+Wallpapers, left to right and top to bottom: prism, aurora, sunset, ocean, graphite, blush, meadow.
+
 </details>
 
 ### GlassVGL Desktop + Icons bundle
 
-Both packs together: $3.99 less than buying them one at a time on Gumroad, and $4.99 less on Ko-fi.
+Both packs together, once GlassVGL Desktop is ready: $3.99 less than buying them one at a time on
+Gumroad, and $4.99 less on Ko-fi.
 
 <img src="assets/previews/bundle.png" alt="The bundle: a GlassVGL Desktop design render next to the GlassVGL Icons preview sheet" width="800">
 
@@ -323,6 +355,8 @@ Arduino guide says (`examples/platformio/include/lv_conf.h` works). Then open
 
 **PlatformIO.**
 
+Run either line from the top of this repository:
+
 ```sh
 cd examples/platformio-native && pio run -t exec    # on your PC
 cd examples/platformio && pio run -e esp32s3         # or esp32, esp32c3, pico, stm32f429
@@ -334,7 +368,8 @@ cd examples/platformio && pio run -e esp32s3         # or esp32, esp32c3, pico, 
 cd examples/esp-idf && idf.py set-target esp32s3 && idf.py build
 ```
 
-**Zephyr.** From your west workspace:
+**Zephyr.** From your west workspace, with the Zephyr SDK installed (or, for `native_sim`, set
+`ZEPHYR_TOOLCHAIN_VARIANT=host` to use your PC's own compiler):
 
 ```sh
 west build -b native_sim/native/64 path/to/GlassVGL/examples/zephyr
@@ -372,12 +407,21 @@ lv_glass_theme_init(disp, &cfg);
 
 ## What has been tested
 
-With GlassVGL Pro beside them, these samples were built on a Linux PC by each toolchain's own tool:
-the desktop sample (with all seven app samples) with CMake and with make against LVGL 9.3.0 and
-9.6.0, `platformio-native` with
-PlatformIO 6.2, `zephyr` on Zephyr's `native_sim/native/64` board, and both Arduino sketches with
-arduino-cli 1.3.1 for the Raspberry Pi Pico. The ESP-IDF sample, the ESP32 builds and the boards in
-`examples/platformio` were not built, and nothing has run on real hardware yet.
+With GlassVGL Pro beside them, these samples were built on a Linux PC by each toolchain's own tool,
+with no warnings from GlassVGL's files:
+
+- **Desktop:** the desktop sample, with all seven app samples, with CMake and with make against
+  LVGL 9.3.0 and 9.6.0. Every build draws the same frames.
+- **PlatformIO on your PC:** `platformio-native` with PlatformIO 6.2 against LVGL 9.3.0 and 9.6.0.
+  It runs and writes the same frame on both.
+- **Raspberry Pi Pico:** both Arduino sketches with arduino-cli 1.3.1 and the arduino-pico core, and
+  the `pico` environment in `examples/platformio`.
+- **Zephyr:** `zephyr` on the `native_sim/native/64` board. It builds and runs the demo.
+
+The PlatformIO and Pico builds were done offline, so LVGL came from a local copy, and the `pico`
+environment used PlatformIO's standard Raspberry Pi platform in place of the one `platformio.ini`
+names. Not verified yet: the ESP-IDF sample, the ESP32, ESP32-S3, ESP32-C3 and STM32F429 builds,
+and anything on real hardware.
 
 ## Licence
 

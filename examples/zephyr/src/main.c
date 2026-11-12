@@ -23,8 +23,8 @@ int main(void)
     lv_glass_config_t cfg;
     lv_glass_config_init(&cfg);
     cfg.scheme = LV_GLASS_SCHEME_DARK;
-    cfg.accent = LV_GLASS_ACCENT_MINT;
-    cfg.wallpaper = LV_GLASS_WALLPAPER_OCEAN;
+    cfg.accent = LV_GLASS_ACCENT_AZURE;
+    cfg.wallpaper = LV_GLASS_WALLPAPER_GRAPHITE;
     lv_glass_theme_init(lv_display_get_default(), &cfg);
 
     lv_glass_stats_t st;
