@@ -123,7 +123,7 @@ static void usage(const char * prog)
            "  --cycle MS                with --screen demo, move to the next demo screen every MS ms\n"
            "  --scheme light|dark       colour scheme (default dark)\n"
            "  --accent NAME             azure, mint, coral, violet, amber or rose\n"
-           "  --wallpaper NAME          aurora, sunset, ocean, blush, meadow or graphite\n"
+           "  --wallpaper NAME          graphite (default), aurora, sunset, ocean, blush or meadow\n"
            "  --mode auto|full|lite|flat glass quality (default auto)\n"
            "  --perf                    show LVGL's frame rate and CPU overlay\n"
            "  --shot FILE.ppm           save the screen to a PPM file once it has drawn, then exit\n"
@@ -324,7 +324,6 @@ int main(int argc, char ** argv)
     lv_glass_config_init(&o.glass);
     o.glass.scheme = LV_GLASS_SCHEME_DARK;
     o.glass.accent = LV_GLASS_ACCENT_AZURE;
-    o.glass.wallpaper = LV_GLASS_WALLPAPER_AURORA;
     if(parse_args(argc, argv, &o) != 0) return 2;
     if(o.backend == BACKEND_NONE) o.backend = backend_default();
     if(!backend_built(o.backend)) {

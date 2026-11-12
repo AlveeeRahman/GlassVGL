@@ -337,6 +337,7 @@ Ubuntu is a trademark of Canonical Ltd. GlassVGL is not affiliated with or endor
 | `examples/esp-idf` | ESP-IDF 5 | The demo with PSRAM switched on |
 | `examples/zephyr` | Zephyr | The demo with GlassVGL as a Zephyr module |
 | `examples/desktop` | CMake or make | The demo or any app sample on your PC, writing a picture of the screen |
+| `examples/linux` | CMake or make | The demo or any app sample on Linux, in a window (SDL), on the screen through DRM/KMS or on `/dev/fb0`, with evdev touch and keys |
 | `examples/showcase` | Any (plain C) | Seven app sample screens to drop into your own project |
 
 The Arduino, PlatformIO and ESP-IDF board samples have one function to fill in, `panel_push()`,
@@ -417,11 +418,13 @@ with no warnings from GlassVGL's files:
 - **Raspberry Pi Pico:** both Arduino sketches with arduino-cli 1.3.1 and the arduino-pico core, and
   the `pico` environment in `examples/platformio`.
 - **Zephyr:** `zephyr` on the `native_sim/native/64` board. It builds and runs the demo.
+- **Linux:** `linux` with CMake and with make on Ubuntu 24.04 against LVGL 9.3.0 and 9.6.0, with
+  all four backends built in. It draws the demo, the pager and all seven app samples in an SDL window, run under Xvfb.
 
 The PlatformIO and Pico builds were done offline, so LVGL came from a local copy, and the `pico`
 environment used PlatformIO's standard Raspberry Pi platform in place of the one `platformio.ini`
 names. Not verified yet: the ESP-IDF sample, the ESP32, ESP32-S3, ESP32-C3 and STM32F429 builds,
-and anything on real hardware.
+and anything on real hardware, including the Linux runner's DRM, fbdev and evdev backends.
 
 ## Licence
 

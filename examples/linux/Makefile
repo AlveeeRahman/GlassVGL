@@ -55,7 +55,8 @@ endif
 CSRCS :=
 include $(LVGL_PATH)/lvgl.mk
 include $(GLASSVGL_DIR)/glassvgl.mk
-CSRCS += main.c ../showcase/glassvgl_showcase.c
+CSRCS += main.c ../showcase/glassvgl_showcase.c ../showcase/glassvgl_showcase_look.c \
+         $(wildcard ../showcase/fonts/gv_font_*.c)
 
 OBJDIR ?= obj
 OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(abspath $(CSRCS)))
