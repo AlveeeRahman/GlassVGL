@@ -20,6 +20,10 @@
   Icons, and a 25-icon GlassVGL Icons sample in `icons/` under CC BY 4.0.
 - GlassVGL Desktop and a GlassVGL Desktop + Icons bundle in "What's for sale", both coming soon,
   with the Canonical trademark note.
+- Every screenshot redrawn in the GlassVGL brand colours: azure accents, slate and teal ribbons
+  over a porcelain or graphite base, with calmer album covers. The pack's own demo screens now use
+  the same look. Every picture of a paid pack carries a "GlassVGL preview" watermark.
+- Design renders of GlassVGL Desktop and a bundle picture in "What's for sale".
 - The README's speed section now covers the change-only live setters and instant page switches.
 
 ## 1.0.0 (2026-11-12)

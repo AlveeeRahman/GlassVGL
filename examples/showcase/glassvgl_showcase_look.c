@@ -1,7 +1,8 @@
 /**
  * @file glassvgl_showcase_look.c
  * The look the README screenshots use: Inter type with Lucide icons, soft panel shadows and a
- * generated wallpaper of glossy ribbons over a pastel (light) or night (dark) mesh. See
+ * generated wallpaper of glossy ribbons in the GlassVGL azure, teal and slate over a porcelain
+ * (light) or graphite (dark) mesh. See
  * glassvgl_showcase_config() in glassvgl_showcase.h.
  *
  * The wallpaper is drawn once, into one screen-sized buffer in the display's own colour format,
@@ -31,22 +32,22 @@ typedef struct {
 } look_t;
 
 static const look_t LIGHT = {
-    0xF3F5FC, 0xFBF3F1,
-    {{0.05f, 0.05f, 0.60f, 0xB9D3FF, 0.90f}, {0.95f, 0.10f, 0.50f, 0xFFC9DA, 0.85f},
-     {0.70f, 1.00f, 0.60f, 0xFFE0B8, 0.85f}, {0.15f, 1.00f, 0.50f, 0xC4F1E4, 0.80f}},
-    {{0.38f, 0.20f, 0.11f, 0.8f, 0.3f, 0x9B8CFF, 0xFF9EC4},
-     {0.62f, 0.16f, 0.10f, 0.95f, 2.2f, 0x7FD8FF, 0x8AA8FF},
-     {0.86f, 0.12f, 0.12f, 0.65f, 4.0f, 0xFFB38A, 0xFF8FB8}},
+    0xEEF2F8, 0xF4F6FA,
+    {{0.05f, 0.05f, 0.60f, 0xC6D9F3, 0.90f}, {0.95f, 0.10f, 0.50f, 0xD9E0EC, 0.85f},
+     {0.70f, 1.00f, 0.60f, 0xD0E8E6, 0.80f}, {0.15f, 1.00f, 0.50f, 0xDDE3EE, 0.80f}},
+    {{0.38f, 0.20f, 0.11f, 0.8f, 0.3f, 0x7FA6E3, 0xA9B9D6},
+     {0.62f, 0.16f, 0.10f, 0.95f, 2.2f, 0x86C9C3, 0x7FA0DA},
+     {0.86f, 0.12f, 0.12f, 0.65f, 4.0f, 0xB3BFD3, 0x93ABD6}},
     0.10f,
 };
 
 static const look_t DARK = {
-    0x0A0E24, 0x04050C,
-    {{0.10f, 0.10f, 0.60f, 0x2B2A8C, 0.80f}, {0.90f, 0.05f, 0.50f, 0x6A1E63, 0.70f},
-     {0.80f, 1.00f, 0.60f, 0x0B4A63, 0.80f}, {0.20f, 1.00f, 0.40f, 0x1B2B6B, 0.50f}},
-    {{0.38f, 0.20f, 0.11f, 0.8f, 0.3f, 0x7A5CFF, 0xFF5FA8},
-     {0.62f, 0.16f, 0.10f, 0.95f, 2.2f, 0x2DD4BF, 0x3B82F6},
-     {0.86f, 0.12f, 0.12f, 0.65f, 4.0f, 0xF472B6, 0x8B5CF6}},
+    0x0F131C, 0x07090D,
+    {{0.10f, 0.10f, 0.60f, 0x1D3557, 0.80f}, {0.90f, 0.05f, 0.50f, 0x2A3346, 0.70f},
+     {0.80f, 1.00f, 0.60f, 0x0F3A44, 0.80f}, {0.20f, 1.00f, 0.40f, 0x1B2436, 0.50f}},
+    {{0.38f, 0.20f, 0.11f, 0.8f, 0.3f, 0x2F6FDB, 0x5B86C9},
+     {0.62f, 0.16f, 0.10f, 0.95f, 2.2f, 0x1E9C94, 0x2B6CB0},
+     {0.86f, 0.12f, 0.12f, 0.65f, 4.0f, 0x4A5A78, 0x6E80A3}},
     0.28f,
 };
 

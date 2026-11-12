@@ -338,9 +338,9 @@ static void build_player(lv_obj_t * scr)
     lv_obj_set_style_pad_column(scr, U(8), 0);
 
     int32_t art = LV_MIN(CONTENT_H * 86 / 100, CONTENT_W * 46 / 100);
-    lv_obj_t * a = cover(scr, art, 0xFF6FA5, 0x7B4DFF, "GLASSHOUSE");
+    lv_obj_t * a = cover(scr, art, 0x6FA6F7, 0x1F4FAE, "GLASSHOUSE");
     lv_obj_set_style_shadow_width(a, U(12), 0);
-    lv_obj_set_style_shadow_color(a, lv_color_hex(0x4B1FB0), 0);
+    lv_obj_set_style_shadow_color(a, lv_color_hex(0x1E3A8A), 0);
     lv_obj_set_style_shadow_opa(a, s_dark ? LV_OPA_60 : LV_OPA_40, 0);
     lv_obj_set_style_shadow_offset_y(a, U(4), 0);
 
@@ -598,11 +598,11 @@ static void build_music(lv_obj_t * scr)
     tinted(sh, "See All", T_FOOT, lv_glass_get_accent());
     lv_obj_t * cards = row(shelf, LV_PCT(100), GAP, LV_FLEX_ALIGN_START);
     static const struct { const char * t; const char * a; uint32_t c1, c2; const char * cap; } al[] = {
-        {"Glasshouse", "The Lumen Set", 0xFF6FA5, 0x7B4DFF, "GLASS"},
-        {"Low Tide", "Harbour Lights", 0x3FD0FF, 0x2B6BFF, "TIDE"},
-        {"Night Drive", "Kilo Static", 0x5B4BFF, 0x14123A, "NIGHT"},
-        {"Sunroom", "Mira Vale", 0xFFC24B, 0xFF6A3D, "SUN"},
-        {"Focus Flow", "Daily Mix", 0x41E0A9, 0x0E8F8A, "FOCUS"},
+        {"Glasshouse", "The Lumen Set", 0x6FA6F7, 0x1F4FAE, "GLASS"},
+        {"Low Tide", "Harbour Lights", 0x5EC4D3, 0x1D6A86, "TIDE"},
+        {"Night Drive", "Kilo Static", 0x47587A, 0x141A2A, "NIGHT"},
+        {"Sunroom", "Mira Vale", 0xE6B877, 0xA8683A, "SUN"},
+        {"Focus Flow", "Daily Mix", 0x5CC6A6, 0x1C7768, "FOCUS"},
     };
     int32_t card_w = (CONTENT_W - 2 * PANEL_PAD - 4 * GAP) / 5;
     for(int i = 0; i < 5; i++) {
@@ -621,7 +621,7 @@ static void build_music(lv_obj_t * scr)
     lv_obj_set_style_pad_all(mini, U(2), 0);
     lv_obj_set_style_pad_right(mini, U(3), 0);
     lv_obj_set_style_pad_column(mini, U(3), 0);
-    lv_obj_t * mc = cover(mini, U(12), 0xFF6FA5, 0x7B4DFF, NULL);
+    lv_obj_t * mc = cover(mini, U(12), 0x6FA6F7, 0x1F4FAE, NULL);
     lv_obj_set_style_radius(mc, LV_RADIUS_CIRCLE, 0);
     lv_obj_t * nm = column(mini, U(40), 0);
     text(nm, "Midnight Static", T_HEAD, false);

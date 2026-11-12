@@ -174,9 +174,9 @@ Left to right, top to bottom: aurora, sunset, ocean, blush, meadow, graphite.
 </details>
 
 <details>
-<summary>The 3D bevel, before and after</summary>
+<summary>The 3D bevel up close</summary>
 
-<img src="assets/previews/bevel-before-after.png" alt="Glass widgets with flat rims and with the 3D bevel" width="830">
+<img src="assets/previews/bevel-close-up.png" alt="The thermostat card at twice its size in the light and dark schemes: a bright edge on the top and left of each glass panel and button, and a darker edge on the bottom and right" width="830">
 
 </details>
 
@@ -206,7 +206,8 @@ It works with LVGL 9.3 to 9.6, in RGB565, RGB565_SWAPPED, RGB888 and XRGB8888.
 
 ## What's for sale
 
-None of the paid packs is on sale yet. The store links below will go live when they are.
+None of the paid packs is on sale yet. The store links below will go live when they are. Every
+picture of a paid pack on this page carries a "GlassVGL preview" watermark.
 
 | | What it is | Price | Licence | Store |
 |---|---|---|---|---|
@@ -268,13 +269,28 @@ always show their own icons. No brand logos are drawn.
 ### GlassVGL Desktop
 
 A frosted-glass theme for the whole desktop, in light and dark, made to go with GlassVGL Icons.
-It will style GTK 3 and GTK 4 apps and the GNOME Shell top bar, menus and notifications, and come
-with wallpapers drawn to match. It is being made for Ubuntu 24.04 (GNOME 46). It is still being
-built, so there are no screenshots of it yet.
+It will style GTK 3 and GTK 4 apps and the GNOME Shell top bar, dock, menus and notifications, and
+come with wallpapers drawn to match. It is being made for Ubuntu 24.04 (GNOME 46). The theme is
+still being built, so the pictures below are design renders of it, not screenshots.
+
+<img src="assets/previews/desktop-light.png" alt="GlassVGL Desktop design render, light scheme: Files and Settings windows with a glass top bar, dock and notification over the ocean wallpaper" width="800">
+
+<details>
+<summary>More GlassVGL Desktop design renders</summary>
+
+<img src="assets/previews/desktop-dark.png" alt="GlassVGL Desktop design render, dark scheme over the graphite wallpaper" width="800">
+
+<img src="assets/previews/desktop-light-fullglass.png" alt="GlassVGL Desktop design render, light scheme with the optional full-glass sidebars and headerbars" width="800">
+
+<img src="assets/previews/desktop-dark-fullglass.png" alt="GlassVGL Desktop design render, dark scheme with the optional full-glass sidebars and headerbars" width="800">
+
+</details>
 
 ### GlassVGL Desktop + Icons bundle
 
 Both packs together: $3.99 less than buying them one at a time on Gumroad, and $4.99 less on Ko-fi.
+
+<img src="assets/previews/bundle.png" alt="The bundle: a GlassVGL Desktop design render next to the GlassVGL Icons preview sheet" width="800">
 
 Ubuntu is a trademark of Canonical Ltd. GlassVGL is not affiliated with or endorsed by Canonical.
 
