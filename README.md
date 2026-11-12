@@ -412,9 +412,10 @@ With GlassVGL Pro beside them, these samples were built on a Linux PC by each to
 with no warnings from GlassVGL's files:
 
 - **Desktop:** the desktop sample, with all seven app samples, with CMake and with make against
-  LVGL 9.3.0 and 9.6.0. Every build draws the same frames.
+  LVGL 9.3.0 and 9.6.0. CMake and make draw the same frames on each LVGL version. Between 9.3.0 and
+  9.6.0 a few pixels change, most of them in the charts sample.
 - **PlatformIO on your PC:** `platformio-native` with PlatformIO 6.2 against LVGL 9.3.0 and 9.6.0.
-  It runs and writes the same frame on both.
+  It runs and writes a frame on both, and the two differ in 2 pixels.
 - **Raspberry Pi Pico:** both Arduino sketches with arduino-cli 1.3.1 and the arduino-pico core, and
   the `pico` environment in `examples/platformio`.
 - **Zephyr:** `zephyr` on the `native_sim/native/64` board. It builds and runs the demo.
