@@ -21,7 +21,7 @@
 
 GlassVGL is a frosted-glass (liquid glass) UI theme for [LVGL](https://lvgl.io) 9, built to run on
 microcontrollers such as the ESP32, ESP32-S3, Raspberry Pi Pico (RP2040) and STM32, as well as on a
-PC. It gives LVGL widgets translucent glass panels, a soft 3D bevel, accent colours and built-in
+PC. It gives LVGL widgets translucent glass panels, a thin edge light, accent colours and built-in
 wallpapers, with light and dark schemes.
 
 This repository holds the free samples: an example project for every common LVGL toolchain, seven
@@ -39,7 +39,8 @@ a music library, weather, a round watch face and an energy dashboard. They are i
 
 **The blur runs once.** Blur is the costly part of a glass look, so GlassVGL does it once at
 start-up and keeps the result. After that a glass panel costs one image copy, one translucent fill
-and two thin bevel lines each time it is drawn. On a PC benchmark (LVGL 9.6, RGB565, one core of a
+and two thin edge lines (a highlight along the top, a faint shade along the bottom) each time it is
+drawn. On a PC benchmark (LVGL 9.6, RGB565, one core of a
 2.1 GHz Xeon), a full-screen redraw of the controls screen at 800x480 took 1.2 ms with the glass on
 and 0.7 ms in FLAT mode with the glass off.
 
@@ -51,6 +52,16 @@ screen of 12 glass tiles refreshed ten times a second with one value changing we
 without GlassVGL (172x320 SPI panel), cut LVGL's share of a CPU core on a static screen from 50.2%
 to 9.5%.
 
+**Taps land sooner.** When a finger lands on one of the demo's page dots, GlassVGL Pro builds the
+page it leads to straight away on a screen that is not shown yet, so when the finger lifts the tap
+only has to show it. In the pack's host tap test (40 taps, LVGL's tick simulated in 1 ms steps,
+instructions counted from finger lift to the settled new page), that is 20% less work after the lift
+at 800x480 on LVGL 9.6 and 17% on 9.3, and 6 to 7% in LITE mode. A press that does not end in a tap
+throws the page away. The sample `lv_conf.h` files also read the touch panel and redraw every 16 ms
+instead of LVGL's default 33, which cuts the wait from lift to the next frame from 16.9 ms to 9.0 ms
+on average, and from 50 ms to 26 ms at worst. On a board the draw time comes on top of that wait,
+and while something animates the screen is redrawn twice as often.
+
 **Page switches skip the fade.** `lv_glass_live_show_screen()` loads a page with no fade, which
 would draw both pages for the whole fade, and runs its refresh timer on the next pass of LVGL's
 timer handler, so the new page shows fresh values instead of waiting a whole timer period.
@@ -58,6 +69,47 @@ timer handler, so the new page shows fresh values instead of waiting a whole tim
 A microcontroller is much slower than a PC, so the demo's STATS screen measures redraw time on your
 board. The soft panel shadows in the app sample screenshots are an option that is off by default:
 shadows are drawn on every redraw, so leave them off on slow boards.
+
+## GlassVGL Flow: one dial from clear glass to solid
+
+GlassVGL Flow is a GlassVGL Pro feature that sets how much of the wallpaper every glass panel lets
+through, from 1 (clearest) to 255 (opaque), with four presets:
+
+| Preset | Depth | What it looks like |
+|---|---|---|
+| `LV_GLASS_DEPTH_CLEAR` | 48 | The clearest glass |
+| `LV_GLASS_DEPTH_FROSTED` | 128 | The classic GlassVGL look, and the default |
+| `LV_GLASS_DEPTH_TINTED` | 192 | A deeper tint |
+| `LV_GLASS_DEPTH_SOLID` | 255 | Opaque panels; the glass behind them is not drawn |
+
+```c
+cfg.depth = LV_GLASS_DEPTH_CLEAR;   /* at start-up, in lv_glass_config_t */
+lv_glass_preview_depth(d);          /* while a slider moves: changes the tint only */
+lv_glass_set_depth(d);              /* when it is let go: one re-bake, with the contrast check */
+uint8_t now = lv_glass_get_depth();
+```
+
+Clear glass usually makes text harder to read, so when the theme bakes the blurred glass it pulls
+only the glass pixels too bright or too dark for text back to a safe level, keeping their hue, and
+then checks the result against WCAG 2. At the default depth, on all six wallpapers in both schemes at 800x480 in
+FULL mode, muted text measured at least 4.5:1 and body text about 7:1. `lv_glass_get_stats()` reports
+the worst contrast it measured on your screen.
+
+On the pack's host benchmark, a frame at Clear costs 0 to 3% more instructions than before, Frosted 0
+to 1%, and Solid 19 to 56% less, because an opaque panel skips its glass. A re-bake with
+`lv_glass_set_depth()` took 9.1 ms at 800x480 in FULL mode on a PC, and `lv_glass_preview_depth()`
+about 0.04 ms.
+
+<details>
+<summary>The controls screen at the four depths, light and dark</summary>
+
+<img src="assets/screens/flow-light.png" alt="The demo controls screen at depth 48, 128, 192 and 255, left to right and top to bottom, light scheme: the wallpaper shows less through the Living room card at each step until the card is solid white" width="816">
+
+<img src="assets/screens/flow-dark.png" alt="The same four depths in the dark scheme: the card goes from clear dark glass to solid dark navy" width="816">
+
+Top left to bottom right: Clear (48), Frosted (128), Tinted (192) and Solid (255).
+
+</details>
 
 ## Screenshots of the LVGL glass theme
 
@@ -195,9 +247,9 @@ light and a dark version, and the theme draws the one that matches the scheme.
 </details>
 
 <details>
-<summary>The 3D bevel up close</summary>
+<summary>The edge light up close</summary>
 
-<img src="assets/previews/bevel-close-up.png" alt="The thermostat card at twice its size in the light and dark schemes: a bright edge on the top and left of each glass panel and button, and a darker edge on the bottom and right" width="830">
+<img src="assets/previews/edge-light-close-up.png" alt="The thermostat card enlarged in the light and dark schemes: a thin bright line along the top edge of the card and its buttons, and a faint shade along the bottom" width="830">
 
 </details>
 
@@ -221,6 +273,7 @@ In snapshot and direct mode each page carries its own copy of the wallpaper.
 - **Widget variants:** panel, accent or clear glass, or a plain solid fill, set per widget.
 - **Swipe pager:** slides pictures of the pages instead of redrawing every widget, when the RAM allows.
 - **Change-only live setters:** labels and colours set from a refresh timer are redrawn only when they change.
+- **GlassVGL Flow:** one depth setting from clear glass to solid, with four presets, that keeps text readable.
 - **Demo:** six screens (home, controls, lists, keyboard, dashboard, stats) that fit any size from 240x240 round to 1024x600.
 - **App samples (free, MIT):** media player, smart home, settings, music library, weather, round watch face and energy dashboard, in `examples/showcase`.
 
@@ -256,6 +309,7 @@ The theme that drew every screenshot on this page.
 - **Glass that is cheap to draw:** the blur is baked once at start-up, with FULL, LITE and FLAT render modes picked by the memory your board has.
 - **Change-only live setters:** labels and colours that have not changed are not redrawn, as in [Why it stays snappy on an MCU](#why-it-stays-snappy-on-an-mcu).
 - **Swipe pager:** slides pictures of the pages instead of redrawing every widget, when the RAM allows.
+- **GlassVGL Flow:** set the glass depth from 1 to 255 at start-up or at run time, as in [GlassVGL Flow](#glassvgl-flow-one-dial-from-clear-glass-to-solid).
 - **Light and dark schemes,** six accents plus your own colour, and six wallpapers drawn in code, each in a light and a dark version.
 - **Six demo screens,** including a STATS screen that measures your board, laid out from 240x240 round to 1024x600.
 - **Ready for your build:** Arduino library, PlatformIO, ESP-IDF component, Zephyr module, CMake and make.

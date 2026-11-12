@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- GlassVGL Flow in the README: the glass depth setting of GlassVGL Pro, from clear (48) to solid
+  (255), with a sheet of the controls screen at the four presets in light and dark.
+- "Why it stays snappy" now says how GlassVGL Pro makes taps land sooner: the demo builds the next
+  page while the finger is down (20% less work after the lift at 800x480 on LVGL 9.6, 17% on 9.3),
+  and a 16 ms refresh period (wait after the lift 16.9 ms to 9.0 ms on average).
+- The desktop, PlatformIO and PlatformIO native samples set `LV_DEF_REFR_PERIOD` to 16 in their
+  `lv_conf.h`, as the Linux sample already did.
+- Every screenshot redrawn from GlassVGL Pro as it is now, light and dark, with the watermark.
+  The bevel close-up is replaced by an edge light close-up, because GlassVGL Pro now draws a thin
+  highlight along the top of each panel and a faint shade along the bottom instead of a bevel.
+
 - Seven app sample screens in `examples/showcase`: media player, smart home, settings, music
   library, weather, round watch face and energy dashboard. The desktop sample can render any of them.
 - New screenshots in `assets/screens`: every demo and app screen in light and dark at 800x480, the
