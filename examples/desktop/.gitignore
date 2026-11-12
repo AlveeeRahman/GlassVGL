@@ -1,0 +1,4 @@
+build/
+obj/
+glassvgl_desktop
+*.ppm

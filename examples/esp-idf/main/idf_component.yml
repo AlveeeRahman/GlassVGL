@@ -1,0 +1,4 @@
+dependencies:
+  lvgl/lvgl: ">=9.3.0,<10.0.0"
+  glassvgl:
+    path: ../../../../GlassVGL-Pro   # the GlassVGL pack; point this wherever you keep it

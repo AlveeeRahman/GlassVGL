@@ -1,0 +1,16 @@
+# PSRAM lets the theme run in FULL mode. Leave these out on chips without PSRAM (C3, C6, H2):
+# the theme then picks LITE.
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_USE_MALLOC=y
+# LVGL through Kconfig: the C library's malloc (LVGL's own 64 KiB pool is too small for the glass),
+# 16-bit colour, and the fonts the demo uses
+CONFIG_LV_USE_CLIB_MALLOC=y
+CONFIG_LV_COLOR_DEPTH_16=y
+CONFIG_LV_FONT_MONTSERRAT_12=y
+CONFIG_LV_FONT_MONTSERRAT_16=y
+CONFIG_LV_FONT_MONTSERRAT_20=y
+CONFIG_LV_FONT_MONTSERRAT_28=y
+CONFIG_LV_FONT_MONTSERRAT_48=y
+CONFIG_FREERTOS_HZ=1000
+CONFIG_LV_USE_SNAPSHOT=y

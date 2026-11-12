@@ -1,0 +1,20 @@
+/* Build check on a PC with no SDL: draw into Zephyr's dummy display instead of an SDL window. */
+/ {
+	chosen {
+		zephyr,display = &glass_dc;
+	};
+
+	glass_dc: glass-dc {
+		compatible = "zephyr,dummy-dc";
+		width = <480>;
+		height = <320>;
+	};
+};
+
+&sdl_dc {
+	status = "disabled";
+};
+
+&input_sdl_touch {
+	status = "disabled";
+};
