@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- What's for sale has one price table with Gumroad and Ko-fi in their own columns, and the test
+  samples sit in a light and dark grid.
 - The README calls the screen designer by its current name, Light EDA (was LiteEDA).
 - GlassVGL Pro is now called GlassVGL Edge GUI. Only the name changed; the sample folder layout still
   expects the pack as `GlassVGL-Pro`.

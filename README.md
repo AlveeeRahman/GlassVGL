@@ -26,7 +26,7 @@ wallpapers, with light and dark schemes.
 
 This repository holds the free samples: an example project for every common LVGL toolchain, seven
 app sample screens, the screenshots, the logo and a free sample of the icon pack. The theme itself
-is the paid GlassVGL Edge GUI pack, which is not on sale yet; see [What's for sale](#whats-for-sale).
+is the paid GlassVGL Edge GUI pack, which is coming soon; see [What's for sale](#whats-for-sale).
 The samples build once the pack sits next to this repository.
 
 <img src="assets/screens/smart-home-dark.png" alt="GlassVGL smart home sample at 800x480 in the dark scheme: frosted glass device tiles, a thermostat dial and scene buttons over a ribbon wallpaper" width="800">
@@ -293,18 +293,18 @@ It works with LVGL 9.3 to 9.6, in RGB565, RGB565_SWAPPED, RGB888 and XRGB8888.
 
 ## What's for sale
 
-None of the paid packs is on sale yet. The store links below will go live when they are. Every
-GlassVGL product was checked and works in light and dark mode; see [Test samples](#test-samples).
-Every picture of a paid pack on this page carries a "GlassVGL preview" watermark. Each pack is a one-time
-payment for a lifetime licence, in US dollars before sales tax; nothing renews.
+The paid packs are coming soon to Gumroad and Ko-fi. Each is a one-time payment for a lifetime
+licence, in US dollars before sales tax, and nothing renews. Every GlassVGL product is tested in
+light and dark mode; see [Test samples](#test-samples). Pictures of paid packs carry a
+"GlassVGL preview" watermark.
 
-| | What it is | Price | Licence | Store |
+| Pack | What it is | Gumroad | Ko-fi | Licence |
 |---|---|---|---|---|
-| **Free (this repository)** | Samples, app screens and assets | Free | MIT (samples), CC BY 4.0 (icon sample) | You are here |
-| **GlassVGL Edge GUI** | The LVGL glass theme itself | $12.99 on Gumroad, $11.99 on Ko-fi | Build into your own products, no royalties | Coming soon |
-| **GlassVGL Icons** | A glass icon theme for Linux desktops | $8.99 on Gumroad, $7.99 on Ko-fi | Personal use on your own devices | Coming soon |
-| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04. Not on sale yet | $19.99 on Gumroad, $18.99 on Ko-fi | Not announced yet | Coming soon |
-| **GlassVGL Desktop + Icons bundle** | GlassVGL Desktop and GlassVGL Icons together | Announced with GlassVGL Desktop | As for each pack | Coming soon |
+| **GlassVGL Edge GUI** | The LVGL glass theme itself | $12.99 | $11.99 | Build into your own products, no royalties |
+| **GlassVGL Icons** | A glass icon theme for Linux desktops | $8.99 | $7.99 | Personal use on your own devices |
+| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04 | $19.99 | $18.99 | To be announced |
+| **Desktop + Icons bundle** | GlassVGL Desktop and GlassVGL Icons together | To be announced | To be announced | As for each pack |
+| **Free samples** | Sample projects, app screens and a 25-icon sample, in this repository | Free | Free | MIT, CC BY 4.0 for the icon sample |
 
 ### Free, in this repository
 
@@ -378,10 +378,10 @@ always show their own icons. No brand logos are drawn.
 
 </details>
 
-### GlassVGL Desktop (design preview)
+### GlassVGL Desktop
 
-**Not available yet.** GlassVGL Desktop is not on sale yet, and the pictures below are design
-renders of it, not screenshots of a running theme.
+Coming soon. The large pictures in this section are design renders; the screenshots of the running
+theme are in the GlassVGL Flow dropdown below and in [Test samples](#test-samples).
 
 A frosted-glass theme for the whole desktop, in light and dark, made to go with GlassVGL Icons.
 It will style GTK 3 and GTK 4 apps and the GNOME Shell top bar, dock, menus and notifications, and
@@ -439,48 +439,67 @@ bundle price will be announced with GlassVGL Desktop.
 
 ### Test samples
 
-Every GlassVGL product was checked and works in light and dark mode. Each green ring marks a
-control that was tapped or clicked and responded.
+Every GlassVGL product is tested in light and dark mode. Each green ring marks a control that
+was tapped or clicked and responded.
 
-<img src="assets/test-samples/edge-gui-tap-test-light.jpg" alt="GlassVGL Edge GUI tap test, light: every control on the demo's controls screen ringed in green" width="400"> <img src="assets/test-samples/edge-gui-tap-test-dark.jpg" alt="GlassVGL Edge GUI tap test, dark" width="400">
-
-<details>
-<summary>GlassVGL Edge GUI: smart home sample tap test</summary>
-
-<img src="assets/test-samples/smart-home-tap-test-light.jpg" alt="Smart home sample tap test, light: sliders, switches, check box and thermostat buttons ringed in green" width="800">
-
-<img src="assets/test-samples/smart-home-tap-test-dark.jpg" alt="Smart home sample tap test, dark" width="800">
-
-</details>
-
-<details>
-<summary>GlassVGL Desktop: GTK 4 and libadwaita click tests</summary>
-
-<img src="assets/test-samples/gtk4-click-test-light.jpg" alt="GlassVGL Desktop GTK 4 click test, light: buttons, toggles, switch, slider, entry, drop-down, tabs and menu ringed in green" width="751">
-
-<img src="assets/test-samples/gtk4-click-test-dark.jpg" alt="GlassVGL Desktop GTK 4 click test, dark" width="751">
-
-<img src="assets/test-samples/libadwaita-click-test-light.jpg" alt="GlassVGL Desktop libadwaita click test, light, with a switch row and pill button" width="800">
-
-<img src="assets/test-samples/libadwaita-click-test-dark.jpg" alt="GlassVGL Desktop libadwaita click test, dark" width="800">
-
-</details>
-
-<details>
-<summary>GlassVGL Desktop: GTK 4 widget factory</summary>
-
-<img src="assets/test-samples/desktop-widget-factory-light.jpg" alt="GTK 4 widget factory on Ubuntu 24.04 with GlassVGL Desktop, light" width="800">
-
-<img src="assets/test-samples/desktop-widget-factory-dark.jpg" alt="GTK 4 widget factory on Ubuntu 24.04 with GlassVGL Desktop, dark" width="800">
-
-</details>
+<table>
+<tr>
+<th width="50%">Light</th>
+<th width="50%">Dark</th>
+</tr>
+<tr>
+<td colspan="2"><b>GlassVGL Edge GUI: tap test on the demo's controls screen</b></td>
+</tr>
+<tr>
+<td width="50%"><img src="assets/test-samples/edge-gui-tap-test-light.jpg" alt="GlassVGL Edge GUI tap test: every control on the demo's controls screen ringed in green, light" width="400"></td>
+<td width="50%"><img src="assets/test-samples/edge-gui-tap-test-dark.jpg" alt="GlassVGL Edge GUI tap test: every control on the demo's controls screen ringed in green, dark" width="400"></td>
+</tr>
+<tr>
+<td colspan="2"><b>GlassVGL Desktop: libadwaita click test</b></td>
+</tr>
+<tr>
+<td width="50%"><img src="assets/test-samples/libadwaita-click-test-light.jpg" alt="GlassVGL Desktop libadwaita click test: buttons, toggles, switch row and pill button ringed in green, light" width="400"></td>
+<td width="50%"><img src="assets/test-samples/libadwaita-click-test-dark.jpg" alt="GlassVGL Desktop libadwaita click test: buttons, toggles, switch row and pill button ringed in green, dark" width="400"></td>
+</tr>
+<tr>
+<td colspan="2"><b>GlassVGL Icons: 48 common icons</b></td>
+</tr>
+<tr>
+<td width="50%"><img src="assets/test-samples/icons-gallery-light.jpg" alt="48 common app, folder, device and file type icons; 47 come from GlassVGL Icons and the shared-folder badge is the system's own, light" width="400"></td>
+<td width="50%"><img src="assets/test-samples/icons-gallery-dark.jpg" alt="48 common app, folder, device and file type icons; 47 come from GlassVGL Icons and the shared-folder badge is the system's own, dark" width="400"></td>
+</tr>
+</table>
 
 <details>
-<summary>GlassVGL Icons: common icons from the pack</summary>
+<summary>Three more test samples</summary>
 
-<img src="assets/test-samples/icons-gallery-light.jpg" alt="48 common app, folder, device and file type icons, light: 47 come from GlassVGL Icons and the shared-folder badge is the system's own" width="800">
-
-<img src="assets/test-samples/icons-gallery-dark.jpg" alt="Common app, folder, device and file type icons drawn from GlassVGL Icons, dark" width="800">
+<table>
+<tr>
+<th width="50%">Light</th>
+<th width="50%">Dark</th>
+</tr>
+<tr>
+<td colspan="2"><b>GlassVGL Edge GUI: smart home sample tap test</b></td>
+</tr>
+<tr>
+<td width="50%"><img src="assets/test-samples/smart-home-tap-test-light.jpg" alt="Smart home sample tap test: sliders, switches, check box and thermostat buttons ringed in green, light" width="400"></td>
+<td width="50%"><img src="assets/test-samples/smart-home-tap-test-dark.jpg" alt="Smart home sample tap test: sliders, switches, check box and thermostat buttons ringed in green, dark" width="400"></td>
+</tr>
+<tr>
+<td colspan="2"><b>GlassVGL Desktop: GTK 4 click test</b></td>
+</tr>
+<tr>
+<td width="50%"><img src="assets/test-samples/gtk4-click-test-light.jpg" alt="GlassVGL Desktop GTK 4 click test: buttons, toggles, switch, slider, entry, drop-down, tabs and menu ringed in green, light" width="400"></td>
+<td width="50%"><img src="assets/test-samples/gtk4-click-test-dark.jpg" alt="GlassVGL Desktop GTK 4 click test: buttons, toggles, switch, slider, entry, drop-down, tabs and menu ringed in green, dark" width="400"></td>
+</tr>
+<tr>
+<td colspan="2"><b>GlassVGL Desktop: GTK 4 widget factory</b></td>
+</tr>
+<tr>
+<td width="50%"><img src="assets/test-samples/desktop-widget-factory-light.jpg" alt="GTK 4 widget factory on Ubuntu 24.04 with GlassVGL Desktop, light" width="400"></td>
+<td width="50%"><img src="assets/test-samples/desktop-widget-factory-dark.jpg" alt="GTK 4 widget factory on Ubuntu 24.04 with GlassVGL Desktop, dark" width="400"></td>
+</tr>
+</table>
 
 </details>
 
