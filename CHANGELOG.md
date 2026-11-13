@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- The demo's inactive page dots now keep the same soft fill at every GlassVGL Flow depth, as in
+  GlassVGL Pro, so they stay visible at Tinted. The screenshots that show page dots are redrawn.
 - GlassVGL Flow in the README: the glass depth setting of GlassVGL Pro, from clear (48) to solid
   (255), with a sheet of the controls screen at the four presets in light and dark.
 - "Why it stays snappy" now says how GlassVGL Pro makes taps land sooner: the demo builds the next
