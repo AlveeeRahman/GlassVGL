@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- A new Tested in the cloud section in the README: GlassVGL in LightEDA's desktop and iPad
+  screen designers with LVGL 9.6.0, the exported C built with warnings as errors, and what still
+  needs a real iPad or Mac.
 - What's for sale has one price table with an icon for each pack, and the test
   samples sit in a light and dark grid.
 - The README calls the screen designer by its current name, LightEDA (was Light EDA, and LiteEDA before that).
