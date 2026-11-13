@@ -298,12 +298,12 @@ dollars before sales tax, and nothing renews. Every GlassVGL product is tested i
 mode; see [Test samples](#test-samples). Pictures of paid packs carry a "GlassVGL preview" watermark.
 
 <table>
-<tr><th width="56"></th><th align="left">Pack</th><th align="right">Price</th><th align="left">Licence</th></tr>
-<tr><td width="56" align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/products/glassvgl-edge-gui-dark.png"><img src="assets/products/glassvgl-edge-gui.png" width="36" height="36" alt=""></picture></td><td><b>GlassVGL Edge GUI</b><br><sub>The LVGL glass theme itself</sub></td><td align="right"><b>$12.99</b></td><td>Build into your own products, no royalties</td></tr>
-<tr><td width="56" align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/products/glassvgl-icons-dark.png"><img src="assets/products/glassvgl-icons.png" width="36" height="36" alt=""></picture></td><td><b>GlassVGL Icons</b><br><sub>A glass icon theme for Linux desktops</sub></td><td align="right"><b>$8.99</b></td><td>Personal use on your own devices</td></tr>
-<tr><td width="56" align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/products/glassvgl-desktop-dark.png"><img src="assets/products/glassvgl-desktop.png" width="36" height="36" alt=""></picture></td><td><b>GlassVGL Desktop</b><br><sub>A glass GTK and GNOME Shell theme for Ubuntu 24.04</sub></td><td align="right"><b>$19.99</b></td><td>To be announced</td></tr>
-<tr><td width="56" align="center"></td><td><b>Desktop + Icons bundle</b><br><sub>GlassVGL Desktop and GlassVGL Icons together</sub></td><td align="right"><b>To be announced</b></td><td>As for each pack</td></tr>
-<tr><td width="56" align="center"></td><td><b>Free samples</b><br><sub>Sample projects, app screens and a 25-icon sample, in this repository</sub></td><td align="right"><b>Free</b></td><td>MIT, CC BY 4.0 for the icon sample</td></tr>
+<tr><th width="48"></th><th align="left">Pack</th><th align="right">Price</th></tr>
+<tr><td width="48" align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/products/glassvgl-edge-gui-dark.png"><img src="assets/products/glassvgl-edge-gui.png" width="36" height="36" alt=""></picture></td><td><b>GlassVGL Edge GUI</b><br><sub>The LVGL glass theme itself. Licence: build into your own products, no royalties.</sub></td><td align="right"><b>$12.99</b></td></tr>
+<tr><td width="48" align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/products/glassvgl-icons-dark.png"><img src="assets/products/glassvgl-icons.png" width="36" height="36" alt=""></picture></td><td><b>GlassVGL Icons</b><br><sub>A glass icon theme for Linux desktops. Licence: personal use on your own devices.</sub></td><td align="right"><b>$8.99</b></td></tr>
+<tr><td width="48" align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/products/glassvgl-desktop-dark.png"><img src="assets/products/glassvgl-desktop.png" width="36" height="36" alt=""></picture></td><td><b>GlassVGL Desktop</b><br><sub>A glass GTK and GNOME Shell theme for Ubuntu 24.04. Licence: to be announced.</sub></td><td align="right"><b>$19.99</b></td></tr>
+<tr><td width="48" align="center"></td><td><b>Desktop + Icons bundle</b><br><sub>GlassVGL Desktop and GlassVGL Icons together. Licence: as for each pack.</sub></td><td align="right"><b>To be announced</b></td></tr>
+<tr><td width="48" align="center"></td><td><b>Free samples</b><br><sub>Sample projects, app screens and a 25-icon sample, in this repository. Licence: MIT, CC BY 4.0 for the icon sample.</sub></td><td align="right"><b>Free</b></td></tr>
 </table>
 
 ### Free, in this repository
