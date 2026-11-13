@@ -95,6 +95,12 @@ then checks the result against WCAG 2. At the default depth, on all six wallpape
 FULL mode, muted text measured at least 4.5:1 and body text about 7:1. `lv_glass_get_stats()` reports
 the worst contrast it measured on your screen.
 
+Two smaller settings go with it. `cfg.low_power = true` gives a flat gradient taken from the
+wallpaper's own colours and keeps no glass buffers, so on the host at 800x480 it starts in 0.30 ms
+instead of 17.3 ms and frees the 1.5 MB of glass that FULL mode keeps. `cfg.edge_light =
+LV_GLASS_EDGE_LIGHT_ACCENT` tints the top edge light with a pale shade of the accent, at no cost per
+frame.
+
 Small marks keep their look at every depth: the demo's inactive page dots carry the same soft
 fill from Clear to Solid, so they no longer fade into the dot bar as the glass gets deeper.
 
@@ -277,6 +283,9 @@ In snapshot and direct mode each page carries its own copy of the wallpaper.
 - **Swipe pager:** slides pictures of the pages instead of redrawing every widget, when the RAM allows.
 - **Change-only live setters:** labels and colours set from a refresh timer are redrawn only when they change.
 - **GlassVGL Flow:** one depth setting from clear glass to solid, with four presets, that keeps text readable.
+- **Accessibility settings:** a contrast guard that keeps text at 4.5:1 (or 7:1) against the glass, plus Reduce Transparency and Increase Contrast switches, named after Apple's.
+- **Edge light colour:** white like daylight (the default), or a pale shade of the accent colour.
+- **Low-power look:** a flat gradient taken from the wallpaper's own colours, with no glass buffers in RAM.
 - **Demo:** six screens (home, controls, lists, keyboard, dashboard, stats) that fit any size from 240x240 round to 1024x600.
 - **App samples (free, MIT):** media player, smart home, settings, music library, weather, round watch face and energy dashboard, in `examples/showcase`.
 
@@ -285,7 +294,8 @@ It works with LVGL 9.3 to 9.6, in RGB565, RGB565_SWAPPED, RGB888 and XRGB8888.
 ## What's for sale
 
 None of the paid packs is on sale yet. The store links below will go live when they are. Every
-picture of a paid pack on this page carries a "GlassVGL preview" watermark.
+picture of a paid pack on this page carries a "GlassVGL preview" watermark. Each pack is a one-time
+payment for a lifetime licence, in US dollars before sales tax; nothing renews.
 
 | | What it is | Price | Licence | Store |
 |---|---|---|---|---|
@@ -315,9 +325,31 @@ The theme that drew every screenshot on this page.
 - **GlassVGL Flow:** set the glass depth from 1 to 255 at start-up or at run time, as in [GlassVGL Flow](#glassvgl-flow-one-dial-from-clear-glass-to-solid).
 - **Light and dark schemes,** six accents plus your own colour, and six wallpapers drawn in code, each in a light and a dark version.
 - **Six demo screens,** including a STATS screen that measures your board, laid out from 240x240 round to 1024x600.
+- **Accessibility settings:** a contrast guard (WCAG 2, 4.5:1 by default or 7:1), Reduce Transparency and Increase Contrast.
 - **Ready for your build:** Arduino library, PlatformIO, ESP-IDF component, Zephyr module, CMake and make.
+- **A starter design for LiteEDA's LVGL screen designer** that exports to C and picks up the glass with no extra code.
+- **Design tokens:** one JSON file that generates the C header and a CSS file, so the same colours can drive a web or desktop skin.
 
-It works with LVGL 9.3 to 9.6. It has been built and run on a PC, and has not been run on real hardware yet.
+How much memory the glass takes, measured on the host with LVGL 9.6 in RGB565 (LITE includes its
+scratch buffer):
+
+| Display | FULL | LITE |
+|---|---|---|
+| 240x240 | 225 KiB | 45 KiB |
+| 320x240 | 300 KiB | 59 KiB |
+| 480x320 | 600 KiB | 117 KiB |
+| 480x480 | 900 KiB | 175 KiB |
+| 800x480 | 1.5 MiB | 292 KiB |
+| 1024x600 | 2.3 MiB | 466 KiB |
+
+FLAT and the low-power look keep no glass buffers. In flash, cross-compiled with arm-none-eabi-gcc
+13.2 at `-Os` for a Cortex-M4F against LVGL 9.6 (object files, before the linker drops unused
+functions), the theme is 17.5 KiB with 2.5 KiB of RAM, the pager 2.3 KiB and the demo screens 5.7 KiB.
+
+It works with LVGL 9.3 to 9.6. It compiles with no warnings against LVGL 9.3 and 9.6 for Cortex-M0+
+(RP2040), Cortex-M33 (RP2350), Cortex-M4F, Cortex-M7, RISC-V (ESP32-C3, C6, P4) and Xtensa, and on
+the four Cortex-M cores the demo screens and a page swipe ran under QEMU with every frame matching
+the PC build bit for bit. It has not been run on real hardware yet.
 
 ### GlassVGL Icons
 
@@ -353,7 +385,11 @@ renders of it, not screenshots of a running theme.
 A frosted-glass theme for the whole desktop, in light and dark, made to go with GlassVGL Icons.
 It will style GTK 3 and GTK 4 apps and the GNOME Shell top bar, dock, menus and notifications, and
 come with seven wallpapers drawn to match, each in a light and a dark version that switch with the
-desktop's style. It is being made for Ubuntu 24.04 (GNOME 46).
+desktop's style. It is being made for Ubuntu 24.04 (GNOME 46) and will come as a `.deb`.
+
+GlassVGL Flow works on the desktop too: one install option picks Clear, Frosted (the default),
+Tinted, Solid or Low power, with text kept at 4.5:1 at every depth. The two sheets in the dropdown
+below are real screenshots of the theme as it is being built, at the five depths, on Ubuntu 24.04.
 
 <img src="assets/previews/desktop-light.png" alt="GlassVGL Desktop design render, light scheme: Files and Settings windows with a glass top bar, dock and notification over the prism wallpaper" width="800">
 
@@ -371,6 +407,15 @@ desktop's style. It is being made for Ubuntu 24.04 (GNOME 46).
 <img src="assets/previews/desktop-wallpapers-dark.png" alt="The seven GlassVGL Desktop wallpapers, dark versions" width="800">
 
 Wallpapers, left to right and top to bottom: prism, aurora, sunset, ocean, graphite, blush, meadow.
+
+</details>
+
+<details>
+<summary>GlassVGL Desktop at the five GlassVGL Flow depths (screenshots)</summary>
+
+<img src="assets/previews/desktop-flow-light.png" alt="GlassVGL Desktop screenshots on Ubuntu 24.04, light scheme, at the five GlassVGL Flow depths: Clear, Frosted, Tinted, Solid and Low power" width="800">
+
+<img src="assets/previews/desktop-flow-dark.png" alt="GlassVGL Desktop screenshots on Ubuntu 24.04, dark scheme, at the five GlassVGL Flow depths" width="800">
 
 </details>
 

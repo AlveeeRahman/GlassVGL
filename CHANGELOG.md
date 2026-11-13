@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- The README now lists the rest of what GlassVGL Pro does: the accessibility settings, the edge light
+  colour, the low-power look, the LiteEDA starter design and the design tokens, with the glass memory
+  per display size, the code size and the microcontroller builds checked under QEMU.
+- GlassVGL Desktop: GlassVGL Flow's five depths, with two screenshot sheets, and that every pack is a
+  one-time payment for a lifetime licence.
 - The demo's inactive page dots now keep the same soft fill at every GlassVGL Flow depth, as in
   GlassVGL Pro, so they stay visible at Tinted. The screenshots that show page dots are redrawn.
 - GlassVGL Flow in the README: the glass depth setting of GlassVGL Pro, from clear (48) to solid
