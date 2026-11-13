@@ -14,7 +14,7 @@ glassvgl_showcase_show(GLASSVGL_SHOWCASE_SMART_HOME);
 ```
 
 Add `glassvgl_showcase.c`, `glassvgl_showcase_look.c` and the `fonts/gv_font_*.c` files to your
-build next to the GlassVGL Pro sources. The landscape screens are
+build next to the GlassVGL Edge GUI sources. The landscape screens are
 laid out for 800x480 to 1024x600 panels, and 480x320 works with fewer items on some screens. The
 watch face is made for round panels from 240x240 to 466x466.
 
