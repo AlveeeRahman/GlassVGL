@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- GlassVGL Pro is now called GlassVGL Edge GUI. Only the name changed; the sample folder layout still
+  expects the pack as `GlassVGL-Pro`.
+- New prices: GlassVGL Icons $8.99 on Gumroad and $7.99 on Ko-fi, GlassVGL Desktop $19.99 on
+  Gumroad and $18.99 on Ko-fi. The bundle price will be announced with GlassVGL Desktop.
+- What's for sale now says every GlassVGL product was checked and works in light and dark mode.
 - The README now lists the rest of what GlassVGL Pro does: the accessibility settings, the edge light
   colour, the low-power look, the LiteEDA starter design and the design tokens, with the glass memory
   per display size, the code size and the microcontroller builds checked under QEMU.

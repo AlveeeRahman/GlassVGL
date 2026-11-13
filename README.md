@@ -26,7 +26,7 @@ wallpapers, with light and dark schemes.
 
 This repository holds the free samples: an example project for every common LVGL toolchain, seven
 app sample screens, the screenshots, the logo and a free sample of the icon pack. The theme itself
-is the paid GlassVGL Pro pack, which is not on sale yet; see [What's for sale](#whats-for-sale).
+is the paid GlassVGL Edge GUI pack, which is not on sale yet; see [What's for sale](#whats-for-sale).
 The samples build once the pack sits next to this repository.
 
 <img src="assets/screens/smart-home-dark.png" alt="GlassVGL smart home sample at 800x480 in the dark scheme: frosted glass device tiles, a thermostat dial and scene buttons over a ribbon wallpaper" width="800">
@@ -45,14 +45,14 @@ drawn. On a PC benchmark (LVGL 9.6, RGB565, one core of a
 and 0.7 ms in FLAT mode with the glass off.
 
 **Unchanged values are not redrawn.** A live screen usually refreshes its labels from a timer, and
-LVGL 9 redraws a label each time its text is set, even when the text is the same. GlassVGL Pro's
+LVGL 9 redraws a label each time its text is set, even when the text is the same. GlassVGL Edge GUI's
 change-only setters compare first and leave unchanged widgets alone. In the pack's host test, a
 screen of 12 glass tiles refreshed ten times a second with one value changing went from 7,570 to
 994 redrawn pixels per refresh. The same technique, used in an earlier ESP32-S3 firmware of ours
 without GlassVGL (172x320 SPI panel), cut LVGL's share of a CPU core on a static screen from 50.2%
 to 9.5%.
 
-**Taps land sooner.** When a finger lands on one of the demo's page dots, GlassVGL Pro builds the
+**Taps land sooner.** When a finger lands on one of the demo's page dots, GlassVGL Edge GUI builds the
 page it leads to straight away on a screen that is not shown yet, so when the finger lifts the tap
 only has to show it. In the pack's host tap test (40 taps, LVGL's tick simulated in 1 ms steps,
 instructions counted from finger lift to the settled new page), that is 20% less work after the lift
@@ -72,7 +72,7 @@ shadows are drawn on every redraw, so leave them off on slow boards.
 
 ## GlassVGL Flow: one dial from clear glass to solid
 
-GlassVGL Flow is a GlassVGL Pro feature that sets how much of the wallpaper every glass panel lets
+GlassVGL Flow is a GlassVGL Edge GUI feature that sets how much of the wallpaper every glass panel lets
 through, from 1 (clearest) to 255 (opaque), with four presets:
 
 | Preset | Depth | What it looks like |
@@ -182,7 +182,7 @@ at 1x and is shown at half size; open an image to see it full size.
 <details>
 <summary>The pack's own demo screens at 800x480</summary>
 
-These are the demo screens exactly as GlassVGL Pro draws them, with the Inter demo fonts that come
+These are the demo screens exactly as GlassVGL Edge GUI draws them, with the Inter demo fonts that come
 with the pack and its built-in wallpapers (ocean in light, graphite in dark). The app samples above
 add the showcase look from this repository: the ribbon wallpaper image, Lucide icons and soft
 shadows.
@@ -294,15 +294,16 @@ It works with LVGL 9.3 to 9.6, in RGB565, RGB565_SWAPPED, RGB888 and XRGB8888.
 ## What's for sale
 
 None of the paid packs is on sale yet. The store links below will go live when they are. Every
-picture of a paid pack on this page carries a "GlassVGL preview" watermark. Each pack is a one-time
+GlassVGL product was checked and works in light and dark mode; see [Test samples](#test-samples).
+Every picture of a paid pack on this page carries a "GlassVGL preview" watermark. Each pack is a one-time
 payment for a lifetime licence, in US dollars before sales tax; nothing renews.
 
 | | What it is | Price | Licence | Store |
 |---|---|---|---|---|
 | **Free (this repository)** | Samples, app screens and assets | Free | MIT (samples), CC BY 4.0 (icon sample) | You are here |
-| **GlassVGL Pro** | The LVGL glass theme itself | $12.99 on Gumroad, $11.99 on Ko-fi | Build into your own products, no royalties | Coming soon |
+| **GlassVGL Edge GUI** | The LVGL glass theme itself | $12.99 on Gumroad, $11.99 on Ko-fi | Build into your own products, no royalties | Coming soon |
 | **GlassVGL Icons** | A glass icon theme for Linux desktops | $8.99 on Gumroad, $7.99 on Ko-fi | Personal use on your own devices | Coming soon |
-| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04. Design preview: still being built, not available yet | $19.99 on Gumroad, $18.99 on Ko-fi | Not announced yet | Coming soon |
+| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04. Not on sale yet | $19.99 on Gumroad, $18.99 on Ko-fi | Not announced yet | Coming soon |
 | **GlassVGL Desktop + Icons bundle** | GlassVGL Desktop and GlassVGL Icons together | Announced with GlassVGL Desktop | As for each pack | Coming soon |
 
 ### Free, in this repository
@@ -312,9 +313,9 @@ payment for a lifetime licence, in US dollars before sales tax; nothing renews.
 - Every screenshot on this page, the logo and the social preview.
 - A 25-icon sample of GlassVGL Icons in [`icons/`](icons), in light and dark, under CC BY 4.0.
 
-The samples need GlassVGL Pro to build. No theme source is in this repository.
+The samples need GlassVGL Edge GUI to build. No theme source is in this repository.
 
-### GlassVGL Pro
+### GlassVGL Edge GUI
 
 The theme that drew every screenshot on this page.
 
@@ -436,6 +437,53 @@ bundle price will be announced with GlassVGL Desktop.
 
 <img src="assets/previews/bundle.png" alt="The bundle: a GlassVGL Desktop design render next to the GlassVGL Icons preview sheet" width="800">
 
+### Test samples
+
+Every GlassVGL product was checked and works in light and dark mode. Each green ring marks a
+control that was tapped or clicked and responded.
+
+<img src="assets/test-samples/edge-gui-tap-test-light.jpg" alt="GlassVGL Edge GUI tap test, light: every control on the demo's controls screen ringed in green" width="400"> <img src="assets/test-samples/edge-gui-tap-test-dark.jpg" alt="GlassVGL Edge GUI tap test, dark" width="400">
+
+<details>
+<summary>GlassVGL Edge GUI: smart home sample tap test</summary>
+
+<img src="assets/test-samples/smart-home-tap-test-light.jpg" alt="Smart home sample tap test, light: sliders, switches, check box and thermostat buttons ringed in green" width="800">
+
+<img src="assets/test-samples/smart-home-tap-test-dark.jpg" alt="Smart home sample tap test, dark" width="800">
+
+</details>
+
+<details>
+<summary>GlassVGL Desktop: GTK 4 and libadwaita click tests</summary>
+
+<img src="assets/test-samples/gtk4-click-test-light.jpg" alt="GlassVGL Desktop GTK 4 click test, light: buttons, toggles, switch, slider, entry, drop-down, tabs and menu ringed in green" width="751">
+
+<img src="assets/test-samples/gtk4-click-test-dark.jpg" alt="GlassVGL Desktop GTK 4 click test, dark" width="751">
+
+<img src="assets/test-samples/libadwaita-click-test-light.jpg" alt="GlassVGL Desktop libadwaita click test, light, with a switch row and pill button" width="800">
+
+<img src="assets/test-samples/libadwaita-click-test-dark.jpg" alt="GlassVGL Desktop libadwaita click test, dark" width="800">
+
+</details>
+
+<details>
+<summary>GlassVGL Desktop: GTK 4 widget factory</summary>
+
+<img src="assets/test-samples/desktop-widget-factory-light.jpg" alt="GTK 4 widget factory on Ubuntu 24.04 with GlassVGL Desktop, light" width="800">
+
+<img src="assets/test-samples/desktop-widget-factory-dark.jpg" alt="GTK 4 widget factory on Ubuntu 24.04 with GlassVGL Desktop, dark" width="800">
+
+</details>
+
+<details>
+<summary>GlassVGL Icons: common icons from the pack</summary>
+
+<img src="assets/test-samples/icons-gallery-light.jpg" alt="48 common app, folder, device and file type icons, light: 47 come from GlassVGL Icons and the shared-folder badge is the system's own" width="800">
+
+<img src="assets/test-samples/icons-gallery-dark.jpg" alt="Common app, folder, device and file type icons drawn from GlassVGL Icons, dark" width="800">
+
+</details>
+
 Ubuntu is a trademark of Canonical Ltd. GlassVGL is not affiliated with or endorsed by Canonical.
 
 ## Sample projects for every LVGL toolchain
@@ -458,10 +506,10 @@ sketch also has `touch_read()`. The Zephyr sample uses the display in your board
 
 ## Quick start: Arduino, PlatformIO, ESP-IDF, Zephyr, CMake
 
-Put your copy of GlassVGL Pro next to this repository, so the two folders sit side by side as
+Put your copy of GlassVGL Edge GUI next to this repository, so the two folders sit side by side as
 `GlassVGL` and `GlassVGL-Pro`. The samples look for it there. You also need LVGL 9.3 or newer.
 
-**Arduino IDE.** Add GlassVGL Pro with Sketch > Include Library > Add .ZIP Library, and install
+**Arduino IDE.** Add GlassVGL Edge GUI with Sketch > Include Library > Add .ZIP Library, and install
 LVGL 9 from the Library Manager. Put an `lv_conf.h` beside the lvgl library folder, as LVGL's
 Arduino guide says (`examples/platformio/include/lv_conf.h` works). Then open
 `examples/GlassVGLDemo/GlassVGLDemo.ino`.
@@ -504,7 +552,7 @@ look of the screenshots (Inter type, Lucide icons, soft shadows and the ribbon w
 `glassvgl_showcase_config(&cfg, disp);` before `lv_glass_theme_init()`. Montserrat 14 must be on
 in `lv_conf.h`, because LVGL's own widget symbols fall back to it.
 
-If GlassVGL Pro lives somewhere else, point the sample at it: `-DGLASSVGL_DIR=...` for CMake and
+If GlassVGL Edge GUI lives somewhere else, point the sample at it: `-DGLASSVGL_DIR=...` for CMake and
 Zephyr, `GLASSVGL_DIR=...` for make, the `symlink://` line in `platformio.ini`, or the `path:` line
 in `examples/esp-idf/main/idf_component.yml`.
 
@@ -520,7 +568,7 @@ lv_glass_theme_init(disp, &cfg);
 
 ## What has been tested
 
-With GlassVGL Pro beside them, these samples were built on a Linux PC by each toolchain's own tool,
+With GlassVGL Edge GUI beside them, these samples were built on a Linux PC by each toolchain's own tool,
 with no warnings from GlassVGL's files:
 
 - **Desktop:** the desktop sample, with all seven app samples, with CMake and with make against
@@ -544,7 +592,7 @@ and anything on real hardware, including the Linux runner's DRM, fbdev and evdev
 The sample code and configuration files are under the MIT licence in [LICENSE](LICENSE). The
 GlassVGL name and logo are not covered by it. The fonts in `examples/showcase/fonts` are built from
 Inter (SIL Open Font License 1.1) and Lucide icons (ISC licence), and keep those licences. The icon
-sample in `icons/` is under CC BY 4.0. The GlassVGL Pro pack the samples build against has its own
+sample in `icons/` is under CC BY 4.0. The GlassVGL Edge GUI pack the samples build against has its own
 paid licence and is not in this repository. Third-party credits are in
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
