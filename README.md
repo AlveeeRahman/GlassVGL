@@ -328,7 +328,7 @@ The theme that drew every screenshot on this page.
 - **Six demo screens,** including a STATS screen that measures your board, laid out from 240x240 round to 1024x600.
 - **Accessibility settings:** a contrast guard (WCAG 2, 4.5:1 by default or 7:1), Reduce Transparency and Increase Contrast.
 - **Ready for your build:** Arduino library, PlatformIO, ESP-IDF component, Zephyr module, CMake and make.
-- **A starter design for LiteEDA's LVGL screen designer** that exports to C and picks up the glass with no extra code.
+- **A starter design for Light EDA's LVGL screen designer** that exports to C and picks up the glass with no extra code.
 - **Design tokens:** one JSON file that generates the C header and a CSS file, so the same colours can drive a web or desktop skin.
 
 How much memory the glass takes, measured on the host with LVGL 9.6 in RGB565 (LITE includes its

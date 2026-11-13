@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- The README calls the screen designer by its current name, Light EDA (was LiteEDA).
 - GlassVGL Pro is now called GlassVGL Edge GUI. Only the name changed; the sample folder layout still
   expects the pack as `GlassVGL-Pro`.
 - New prices: GlassVGL Icons $8.99 on Gumroad and $7.99 on Ko-fi, GlassVGL Desktop $19.99 on
