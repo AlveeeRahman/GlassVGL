@@ -95,6 +95,9 @@ then checks the result against WCAG 2. At the default depth, on all six wallpape
 FULL mode, muted text measured at least 4.5:1 and body text about 7:1. `lv_glass_get_stats()` reports
 the worst contrast it measured on your screen.
 
+Small marks keep their look at every depth: the demo's inactive page dots carry the same soft
+fill from Clear to Solid, so they no longer fade into the dot bar as the glass gets deeper.
+
 On the pack's host benchmark, a frame at Clear costs 0 to 3% more instructions than before, Frosted 0
 to 1%, and Solid 19 to 56% less, because an opaque panel skips its glass. A re-bake with
 `lv_glass_set_depth()` took 9.1 ms at 800x480 in FULL mode on a PC, and `lv_glass_preview_depth()`
