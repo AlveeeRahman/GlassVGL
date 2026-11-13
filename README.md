@@ -301,9 +301,9 @@ payment for a lifetime licence, in US dollars before sales tax; nothing renews.
 |---|---|---|---|---|
 | **Free (this repository)** | Samples, app screens and assets | Free | MIT (samples), CC BY 4.0 (icon sample) | You are here |
 | **GlassVGL Pro** | The LVGL glass theme itself | $12.99 on Gumroad, $11.99 on Ko-fi | Build into your own products, no royalties | Coming soon |
-| **GlassVGL Icons** | A glass icon theme for Linux desktops | $12.99 on Gumroad, $11.99 on Ko-fi | Personal use on your own devices | Coming soon |
-| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04. Design preview: still being built, not available yet | $18.99 on Gumroad, $17.99 on Ko-fi | Not announced yet | Coming soon |
-| **GlassVGL Desktop + Icons bundle** | GlassVGL Desktop and GlassVGL Icons together | $27.99 on Gumroad, $24.99 on Ko-fi | As for each pack | Coming soon |
+| **GlassVGL Icons** | A glass icon theme for Linux desktops | $8.99 on Gumroad, $7.99 on Ko-fi | Personal use on your own devices | Coming soon |
+| **GlassVGL Desktop** | A glass GTK and GNOME Shell theme for Ubuntu 24.04. Design preview: still being built, not available yet | $19.99 on Gumroad, $18.99 on Ko-fi | Not announced yet | Coming soon |
+| **GlassVGL Desktop + Icons bundle** | GlassVGL Desktop and GlassVGL Icons together | Announced with GlassVGL Desktop | As for each pack | Coming soon |
 
 ### Free, in this repository
 
@@ -387,6 +387,16 @@ It will style GTK 3 and GTK 4 apps and the GNOME Shell top bar, dock, menus and 
 come with seven wallpapers drawn to match, each in a light and a dark version that switch with the
 desktop's style. It is being made for Ubuntu 24.04 (GNOME 46) and will come as a `.deb`.
 
+What the preview shows it will include:
+
+- **Light and dark themes** for GTK 3 apps, GTK 4 and libadwaita apps, and the GNOME Shell top bar, dock, menus and notifications.
+- **Seven matching wallpapers,** each in a light and a dark version.
+- **GlassVGL Flow depths:** Clear, Frosted, Tinted, Solid and Low power, picked at install.
+- **One-command install and uninstall,** with the uninstall putting your old theme, accent and wallpaper back.
+- **Made to pair with GlassVGL Icons,** with a Desktop + Icons bundle planned.
+
+Only preview pictures are in this repository. The theme files are not public.
+
 GlassVGL Flow works on the desktop too: one install option picks Clear, Frosted (the default),
 Tinted, Solid or Low power, with text kept at 4.5:1 at every depth. The two sheets in the dropdown
 below are real screenshots of the theme as it is being built, at the five depths, on Ubuntu 24.04.
@@ -421,8 +431,8 @@ Wallpapers, left to right and top to bottom: prism, aurora, sunset, ocean, graph
 
 ### GlassVGL Desktop + Icons bundle
 
-Both packs together, once GlassVGL Desktop is ready: $3.99 less than buying them one at a time on
-Gumroad, and $4.99 less on Ko-fi.
+Both packs together, once GlassVGL Desktop is ready, for less than buying them one at a time. The
+bundle price will be announced with GlassVGL Desktop.
 
 <img src="assets/previews/bundle.png" alt="The bundle: a GlassVGL Desktop design render next to the GlassVGL Icons preview sheet" width="800">
 
