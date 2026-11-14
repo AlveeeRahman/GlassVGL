@@ -648,6 +648,23 @@ two pages drawn by the C the iPad designer exported.
 
 </details>
 
+<details>
+<summary>Watermarked previews from the same tests</summary>
+
+<p>
+  <img src="assets/tested/previews/desktop-designer.png" alt="Preview, watermarked Tested in the cloud: the LightEDA desktop designer with the GlassVGL starter design on its LVGL canvas and the GlassVGL Edge GUI theme chosen in the side panel" width="600">
+</p>
+<p>
+  <img src="assets/tested/previews/ipad-designer.png" alt="Preview, watermarked Tested in the cloud: the LightEDA iPad designer's interface with a card drawn on the GlassVGL canvas and its size and fill in the side panel" width="600">
+</p>
+<p>
+  <img src="assets/tested/previews/exported-c.png" alt="Preview, watermarked Tested in the cloud: the home page drawn by the exported C, built against LVGL 9.6 with GlassVGL at 480x320" width="600">
+</p>
+
+The iPad preview is the iPad designer's interface running on Linux, not a real iPad.
+
+</details>
+
 ## Licence
 
 The sample code and configuration files are under the MIT licence in [LICENSE](LICENSE). The
