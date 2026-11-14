@@ -606,6 +606,48 @@ environment used PlatformIO's standard Raspberry Pi platform in place of the one
 names. Not verified yet: the ESP-IDF sample, the ESP32, ESP32-S3, ESP32-C3 and STM32F429 builds,
 and anything on real hardware, including the Linux runner's DRM, fbdev and evdev backends.
 
+## Tested in the cloud
+
+On 13 November 2026 GlassVGL was tested inside LightEDA's LVGL screen designer, on a cloud Linux
+machine running Ubuntu 24.04, with LVGL 9.6.0 and a 480x320 display. The checks used the GlassVGL Edge GUI theme. The exported
+C check passed on two versions of it: the one the designer was built with, and the Edge GUI
+sources of 12 November.
+
+- **LightEDA desktop designer:** the designer offers GlassVGL as a theme pack and draws its canvas
+  with LVGL itself, built to WebAssembly with Emscripten 4.0.15. The app ran in an X display under
+  Xvfb and was driven by clicks. The canvas's drawing code, built natively against the same LVGL
+  and GlassVGL, draws every page of three test designs pixel for pixel as their exported C does.
+  One of the three is the GlassVGL starter design.
+- **Exported C:** the GlassVGL starter exports to C, which builds and links against LVGL 9.6.0
+  with gcc 13.3. The exported files build with `-Wall -Wextra -Werror -Wno-unused-parameter`.
+  `ui_init()` starts the GlassVGL theme before it builds the pages, and every page renders as glass.
+- **LightEDA iPad designer:** the new iPad screen designer draws the same LVGL canvas with
+  GlassVGL. No iPad was available, so its interface ran on Linux under Xvfb, with a mouse drag in
+  place of the Apple Pencil. The drawn card appeared on the page, and Save and Export C wrote the
+  design and its C. That C built with the same warnings-as-errors flags and drew the same page.
+- **Test suites:** the desktop app's 383 interface tests and the iPad app's 66 passed, along with
+  the Rust tests and the export checks above.
+
+Not tested yet: anything on a real iPad or Mac, including how the Apple Pencil feels, how fast
+the canvas runs on the iPad, the macOS build and how the canvas looks on macOS.
+
+<details>
+<summary>What the tests drew: designer canvases and the exported C</summary>
+
+<p>
+  <img src="assets/tested/desktop-designer-canvas.png" alt="The GlassVGL starter design drawn by LVGL on the LightEDA desktop designer's canvas: a clock card and a row of Lights and Scenes buttons over an aurora wallpaper" width="400">
+  <img src="assets/tested/ipad-designer-canvas.png" alt="The same design on the iPad designer's canvas, with a new blue card drawn below the buttons and its size shown under it" width="400">
+</p>
+<p>
+  <img src="assets/tested/exported-c-home.png" alt="The home page drawn by the C the iPad designer exported, built against LVGL 9.6.0 with GlassVGL: the clock card, the buttons and the drawn card" width="400">
+  <img src="assets/tested/exported-c-controls.png" alt="The controls page from the same exported C: a living room slider, Fan and Heating switches and a Back button in glass" width="400">
+</p>
+
+Top: the desktop designer's canvas, and the iPad designer's canvas with a card drawn. Bottom: the
+two pages drawn by the C the iPad designer exported.
+
+</details>
+
 ## Licence
 
 The sample code and configuration files are under the MIT licence in [LICENSE](LICENSE). The
