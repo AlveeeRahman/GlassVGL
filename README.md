@@ -306,6 +306,8 @@ mode; see [Test samples](#test-samples). Pictures of paid packs carry a "GlassVG
 <tr><td width="62" align="center"></td><td><b>Free samples</b><br><sub>Sample projects, app screens and a 25-icon sample, in this repository. Licence: MIT, CC BY 4.0 for the icon sample.</sub></td><td align="right"><b>Free</b></td></tr>
 </table>
 
+Previews of every pack and the shop links are on the [GlassVGL page on BuildForPeople](https://buildforpeople.dev/glassvgl).
+
 ### Free, in this repository
 
 - Sample projects for Arduino, PlatformIO, ESP-IDF, Zephyr, CMake and make.
